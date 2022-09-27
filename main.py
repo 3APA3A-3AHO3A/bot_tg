@@ -107,6 +107,11 @@ def get_text_messages(message):
             keyboard1.row('Смотрители', 'Босс', 'Факела', 'Подземелья', 'Назад')
             bot.send_message(message.chat.id, "Выбери интересующую локацию.", reply_markup=keyboard1)
 
+        elif message.text.title() == "Назад":
+            keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+            keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы')
+            bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard1)
+
         elif message.text.title() == "Смотрители":
             keyboard = types.InlineKeyboardMarkup()
             key_svyatoy = types.InlineKeyboardButton(text='Святой', callback_data='svyatoy')
@@ -178,24 +183,11 @@ def get_text_messages(message):
             bot.send_message(message.from_user.id, text='Выбери интересующие таблицы:', reply_markup=keyboard)
         elif message.text.title() == "Пвп":
             if swat(message.chat.id):
-                keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-                keyboard1.row('Хаос', 'Порядок', 'Назад')
-                bot.send_message(message.chat.id, "Выбери смотрителя твоей пачки.", reply_markup=keyboard1)
-            else:
-                bot_logs.send_message(config.admin_id, text='Пользователь {1} https://t.me/{0} '
-                                                            'ID: ```'.format(user_name, first_name) +
-                str(message.chat.id) + '```' + " без доступа к ПВП", parse_mode='Markdown')
-                bot.send_message(message.from_user.id, text='Для доступа к ПВП пользователь должен находиться'
-                                                            'в группах Спецназ или Штурмовики.')
-        elif message.text.title() == "Назад":
-            keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы')
-            bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard1)
-        elif message.text.title() == "Хаос":
-            if swat(message.chat.id):
                 keyboard = types.InlineKeyboardMarkup()
                 key_dinamo = types.InlineKeyboardButton(text='Динамо', callback_data='dinamo')
-                key_chezh = types.InlineKeyboardButton(text='Чешуекрыл', callback_data='chezh_chaos')
+                key_chezh_poryadok = types.InlineKeyboardButton(text='Чешуекрыл(Порядок)',
+                                                                callback_data='chezh_poryadok')
+                key_chezh_chaos = types.InlineKeyboardButton(text='Чешуекрыл(Хаос)', callback_data='chezh_chaos')
                 key_mechnic = types.InlineKeyboardButton(text='Мечник', callback_data='mechnic')
                 key_demon = types.InlineKeyboardButton(text='Демон-охотник', callback_data='demon')
                 key_bard = types.InlineKeyboardButton(text='Бард', callback_data='bard')
@@ -203,53 +195,39 @@ def get_text_messages(message):
                 key_mumiya = types.InlineKeyboardButton(text='Мумия', callback_data='mumiya')
                 key_mari = types.InlineKeyboardButton(text='Мэри', callback_data='mari')
                 key_tycva = types.InlineKeyboardButton(text='Тыква', callback_data='tycva')
-
-                keyboard.add(
-                    key_dinamo,
-                    key_chezh,
-                    key_mechnic,
-                    key_demon,
-                    key_bard,
-                    key_hudozhka,
-                    key_mumiya,
-                    key_mari,
-                    key_tycva
-                )
-                bot.send_message(message.from_user.id, text='Выбери интересующую сборку героя:',
-                                 reply_markup=keyboard)
-
-        elif message.text.title() == "Порядок":
-            if swat(message.chat.id):
-                keyboard = types.InlineKeyboardMarkup()
-                key_dinamo = types.InlineKeyboardButton(text='Динамо', callback_data='dinamo')
-                key_chezh = types.InlineKeyboardButton(text='Чешуекрыл', callback_data='chezh_poryadok')
-                key_mechnic = types.InlineKeyboardButton(text='Мечник', callback_data='mechnic')
                 key_frostee = types.InlineKeyboardButton(text='Фрости', callback_data='frostee')
-                key_bard = types.InlineKeyboardButton(text='Бард', callback_data='bard')
-                key_mari = types.InlineKeyboardButton(text='Мэри', callback_data='mari')
-                key_tycva = types.InlineKeyboardButton(text='Тыква', callback_data='tycva')
                 key_maestro = types.InlineKeyboardButton(text='Маэстро', callback_data='maestro')
                 key_krist = types.InlineKeyboardButton(text='Кристелла', callback_data='krist')
                 key_fairy = types.InlineKeyboardButton(text='Фейри', callback_data='fairy')
                 key_okkult = types.InlineKeyboardButton(text='Оккультист', callback_data='okkult')
                 key_koloss = types.InlineKeyboardButton(text='Колосс', callback_data='koloss')
-
                 keyboard.add(
                     key_dinamo,
-                    key_chezh,
+                    key_chezh_poryadok,
+                    key_chezh_chaos,
                     key_mechnic,
-                    key_frostee,
+                    key_fairy,
                     key_bard,
-                    key_mari,
-                    key_tycva,
+                    key_frostee,
+                    key_okkult,
+                    key_hudozhka,
                     key_maestro,
                     key_krist,
-                    key_fairy,
-                    key_okkult,
+                    key_demon,
+                    key_mumiya,
+                    key_mari,
+                    key_tycva,
                     key_koloss
                 )
                 bot.send_message(message.from_user.id, text='Выбери интересующую сборку героя:',
                                  reply_markup=keyboard)
+            else:
+                bot_logs.send_message(config.admin_id, text='Пользователь {1} https://t.me/{0} '
+                                                            'ID: ```'.format(user_name, first_name) +
+                str(message.chat.id) + '```' + " без доступа к ПВП", parse_mode='Markdown')
+                bot.send_message(message.from_user.id, text='Для доступа к ПВП пользователь должен находиться'
+                                                            'в группах Спецназ или Штурмовики.')
+
     else:
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(types.InlineKeyboardButton('Создатель бота', url='https://t.me/Vadik3AHO3A'))
@@ -333,26 +311,27 @@ def callback_worker(call):
                          reply_markup = keyboard)
 
     elif call.data == "prorok":
-        img1 = open('Database/smotr/prorok/prorok1.jpg', 'rb')
-        img2 = open('Database/smotr/prorok/prorok2.jpg', 'rb')
-        img3 = open('Database/smotr/prorok/prorok3.jpg', 'rb')
-        img4 = open('Database/smotr/prorok/prorok4.jpg', 'rb')
-        img5 = open('Database/smotr/prorok/prorok5.jpg', 'rb')
-        img6 = open('Database/smotr/prorok/prorok6.jpg', 'rb')
+        img1 = open('Database/smotr/prorok/prorok1.png', 'rb')
+        img2 = open('Database/smotr/prorok/prorok2.png', 'rb')
+        img3 = open('Database/smotr/prorok/prorok3.png', 'rb')
+        img4 = open('Database/smotr/prorok/prorok4.png', 'rb')
+        img5 = open('Database/smotr/prorok/prorok5.png', 'rb')
+        img6 = open('Database/smotr/prorok/prorok6.png', 'rb')
+        img7 = open('Database/smotr/prorok/pack.png', 'rb')
         bot.send_photo(call.message.chat.id, img1)
         bot.send_photo(call.message.chat.id, img2)
         bot.send_photo(call.message.chat.id, img3)
         bot.send_photo(call.message.chat.id, img4)
         bot.send_photo(call.message.chat.id, img5)
         bot.send_photo(call.message.chat.id, img6)
+        bot.send_photo(call.message.chat.id, img7)
         bot.send_message(call.message.chat.id,
-                         "Пророк:\n" +
-                         "Динамо: Бастион, раскол, тирания\n" +
-                         "Художница: Священный огонь, выживание, управление временем\n" +
-                         "Спарки: Священный огонь, выживание, кровавый барьер\n" +
-                         "Мадам Боа: Священный огонь, выживание, тирания\n" +
-                         "Жрица Воды: Стойкость, выживание, щит порядка\n" +
-                         "Князь Тыква: Священный огонь, исцеление, сказочный круг\n"
+                         "Пророк (сборка от Сергея @IKREMEN):\n" +
+                         "При высадке важно учитывать, чтобы на первых двух выпущенных героях были питомцы Осьминоги."
+                         "\nСборка на всех героях одна: "
+                         "\nРаскол, Священный огонь, Зелье безумия, Пиромаг."
+                         "\n`На тыкву`: Раскол, Священный огонь, Кровавый барьер, Священный огонь.",
+                         parse_mode='Markdown'
                          )
 
     elif call.data == "poryadok":
@@ -524,7 +503,7 @@ def callback_worker(call):
         bot.send_photo(call.message.chat.id, img)
 
     elif call.data == "sozv":
-        msg = "Перевод созвездий:" \
+        msg = "*Перевод созвездий*:" \
               "\nАтака - Attack" \
               "\nЖизнь - HP" \
               "\nТочность - ACC" \
@@ -532,7 +511,7 @@ def callback_worker(call):
               "\nКрит удар - CRIT" \
               "\nКрит урон - CRIT DMG" \
               "\nКрит. сопротивление (антикрит) - CRIT Resist"
-        bot.send_message(call.message.chat.id, msg)
+        bot.send_message(call.message.chat.id, msg, parse_mode='Markdown')
 
     elif call.data == "dop":
         msg = "Таблица допов:"
