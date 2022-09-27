@@ -3,10 +3,8 @@ import config
 from telebot import types
 
 """
-git init
-git add .
-git commit -am "update1"
-git push heroku master
+cd bot_tg
+python main.py
 """
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
