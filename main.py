@@ -35,7 +35,7 @@ def start_message(message):
 
     if author(message.chat.id):
         keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы')
+        keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы', 'Нарсия')
         bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name +
                          ", бот создан KnightsOfNarsia. \nСправка /help ", reply_markup=keyboard1)
         bot_logs.send_message(config.admin_id, text='Пользователь, у которого есть доступ, {1} https://t.me/{0}'
@@ -74,9 +74,28 @@ def get_text_messages(message):
                              '\nПВП - актуальные сборки героев для ПВП режимов.' +
                              '\nБГ - сборки для прохождения Битвы Гильдий.' +
                              '\nЛокации - сборки для прохождения командных подземелий, смотрителя, факела, босса.' +
-                             '\nТаблицы - сводные таблицы по игровому процессу.' +
+                             '\nТаблицы - сводные таблицы по игровому процессу.'
+                             '\nНарсия - обучение игровому процессу в Нарсии' +
                              '\nНаш канал по бесплатным самоцветам по ссылке ниже.' +
                              '\nЕсли остались вопросы или пожелания, напишите создателю бота.', reply_markup=keyboard)
+
+        elif message.text.title() == "Нарсия":
+            keyboard = types.InlineKeyboardMarkup()
+            key_kamen = types.InlineKeyboardButton(text='Камень', callback_data='kamen')
+            key_spam = types.InlineKeyboardButton(text='Спам-пачка', callback_data='spam')
+            key_zahvat = types.InlineKeyboardButton(text='Захват', callback_data='zahvat')
+            key_othill = types.InlineKeyboardButton(text='Отхил', callback_data='othill')
+            key_pos = types.InlineKeyboardButton(text='Атака', callback_data='pos')
+            key_deffence = types.InlineKeyboardButton(text='Защита', callback_data='deffence')
+            keyboard.add(
+                key_kamen,
+                key_spam,
+                key_zahvat,
+                key_othill,
+                key_pos,
+                key_deffence
+            )
+            bot.send_message(message.from_user.id, text='Выбери интересующую механику:', reply_markup=keyboard)
 
         elif message.text.title() == "Бг":
             keyboard = types.InlineKeyboardMarkup()
@@ -109,7 +128,7 @@ def get_text_messages(message):
 
         elif message.text.title() == "Назад":
             keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы')
+            keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы', 'Нарсия')
             bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard1)
 
         elif message.text.title() == "Смотрители":
@@ -279,6 +298,89 @@ def callback_worker(call):
         bot.send_photo(call.message.chat.id, img5)
         bot.send_photo(call.message.chat.id, img6)
         bot.send_message(call.message.chat.id, "Сборка на БГ от Сергея @IKREMEN")
+
+    # Нарсия
+    elif call.data == "kamen":
+        keyboard = types.InlineKeyboardMarkup()
+        keyboard.add(types.InlineKeyboardButton('Видео', url='https://youtu.be/S4Etfs8f5l0'))
+        bot.send_message(call.message.chat.id,
+                         "Для отправки камня в замок гильдии/поселок/город необходимо:"
+                         "\n1.Нажать на соответствующий замок гильдии/поселок/город."
+                         "\n2.Нажать на кнопку молотка."
+                         "\n3.Выбрать количество камня, например, стрелкой вправо максимальное."
+                         "\n4.Нажать кнопку подарить.",
+                         reply_markup=keyboard
+                         )
+
+    elif call.data == "spam":
+        keyboard = types.InlineKeyboardMarkup()
+        keyboard.add(types.InlineKeyboardButton('Видео', url='https://youtu.be/tyzndFS9CAs'))
+        bot.send_message(call.message.chat.id,
+                         "Создание пачки для спама/захвата клетки:"
+                         "\n1.Нажать справа на одну из трех линий (это ваши пачки)."
+                         "\n2.Нажать на кнопку Создать команду."
+                         "\n3.Нажать на кнопку Редактировать."
+                         "\n4.Выбрать и поставить на плитки 3х слабых героев."
+                         "\n5.Нажать на кнопку сохранить."
+                         "\nИспользовать пачку, пока не закончится ХП пачки, далее блок Отхил",
+                         reply_markup=keyboard
+                         )
+
+    elif call.data == "zahvat":
+        keyboard = types.InlineKeyboardMarkup()
+        keyboard.add(types.InlineKeyboardButton('Видео', url='https://youtu.be/9VtSfd9wspw'))
+        bot.send_message(call.message.chat.id,
+                         "Для захвата клетки:"
+                         "\n1.Нажать на определенную клетку, которую хотите атаковать."
+                         "\n2.Нажать на кнопку Меча."
+                         "\n3.Выбрать пачку, которой будете атаковать."
+                         "\n4.Нажать на кнопку ОК."
+                         "\n5.Перед вами откроется окно, где видно время марша, время возвращения, расход воды."
+                         "\n6.Нажать на кнопку Высадить.",
+                         reply_markup=keyboard
+                         )
+
+    elif call.data == "othill":
+        keyboard = types.InlineKeyboardMarkup()
+        keyboard.add(types.InlineKeyboardButton('Видео', url='https://youtu.be/Zgi10tD15Dk'))
+        img = open('Database/othill.png', 'rb')
+        bot.send_message(call.message.chat.id,
+                         "Герои при полном истощении уходят в КД на 10 минут (пример на фото)."
+                         "\nДля восстановления ХП героев после истощения:"
+                         "\n1.Нажать справа на одну из трех линий (это ваши пачки)."
+                         "\n2.Нажать на кнопку Создать команду."
+                         "\n3.Нажать на кнопку Восстановить силу."
+                         "\n4.Нажать у каждого героя +10, чтоб текущая сила героя стала 10/100."
+                         "\n5.Нажать на кнопку ОК.",
+                         reply_markup=keyboard
+                         )
+        bot.send_photo(call.message.chat.id, img)
+
+    elif call.data == "pos":
+        bot.send_message(call.message.chat.id,
+                         "Для атаки поселка/города/импа:"
+                         "\n1.Нажать справа на одну из трех линий (это ваши пачки)."
+                         "\n2.Нажать на кнопку Создать команду."
+                         "\n3.Нажать на кнопку Редактировать."
+                         "\n4.Выбрать и поставить на плитки 3х героев, один из которых 30+ прорыв с полным ХП"
+                         "и два слабых героя по 10 ХП."
+                         "\n5.Нажать на кнопку сохранить."
+                         "\nС каждой атакой восстанавливать ХП у героя с 30+ прорывом и заменять двух слабых героев"
+                         "на других по 10 хп."
+                         )
+
+    elif call.data == "deffence":
+        bot.send_message(call.message.chat.id,
+                         "Для защиты поселка/города:"
+                         "\n1.Нажать справа на одну из трех линий (это ваши пачки)."
+                         "\n2.Нажать на кнопку Создать команду."
+                         "\n3.Нажать на кнопку Редактировать."
+                         "\n4.1.Защита спамом: три слабых героя 10 хп."
+                         "\n4.2.Защита фулом: шесть сильнейших героя фул хп."
+                         "\n5.Нажать на кнопку сохранить."
+                         "\n6.1.Спам менять с каждой атакой врага, не отхилливать фул."
+                         "\n6.2.Фул пак: восстанавливать постоянно ХП после атаки врага."
+                         )
 
     # Смотрители
     elif call.data == "svyatoy":
