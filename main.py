@@ -5,6 +5,7 @@ from telebot import types
 """
 cd bot_tg
 python main.py
+git pull
 """
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
@@ -14,14 +15,6 @@ bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 def author(chat_id):
     strid = str(chat_id)
     for item in config.users:
-        if str(item) == strid:
-            return True
-    return False
-
-
-def author_admin(chat_id):
-    strid = str(chat_id)
-    for item in config.admins:
         if str(item) == strid:
             return True
     return False
@@ -163,6 +156,7 @@ def get_text_messages(message):
             key_abbreviation = types.InlineKeyboardButton(text='Аббревиатуры', callback_data='abbreviation')
             key_titul = types.InlineKeyboardButton(text='Титул', callback_data='titul')
             key_dusha = types.InlineKeyboardButton(text='Душа', callback_data='dusha')
+            key_suvenir = types.InlineKeyboardButton(text='Сувенир', callback_data='suvenir')
             key_relik = types.InlineKeyboardButton(text='Реликвия', callback_data='relik')
             key_sozv = types.InlineKeyboardButton(text='Созвездия', callback_data='sozv')
             keyboard.add(
@@ -172,6 +166,7 @@ def get_text_messages(message):
                 key_relik,
                 key_adapt,
                 key_accessory,
+                key_suvenir,
                 key_dusha,
                 key_pet,
                 key_setka,
@@ -291,7 +286,7 @@ def callback_worker(call):
             bot.send_message(call.message.chat.id, msg)
             bot.send_photo(call.message.chat.id, img)
 
-
+    # Смотрители
     if call.data == "svyatoy":
         img1 = open('Database/smotr/svyat/svyat1.jpg', 'rb')
         img2 = open('Database/smotr/svyat/svyat2.jpg', 'rb')
@@ -372,6 +367,7 @@ def callback_worker(call):
         bot.send_photo(call.message.chat.id, img6)
         bot.send_video(call.message.chat.id, video)
 
+    # Подземелья
     elif call.data == "razlom":
         img = open('Database/podzem/fault.jpg', 'rb')
         bot.send_message(call.message.chat.id, "Мадам Боа: раскол, воодушевление, пиромаг. Питомец иллюзорность" +
@@ -392,6 +388,7 @@ def callback_worker(call):
                          "\nВедьма: щит дракона, раскол, пиромаг")
         bot.send_photo(call.message.chat.id, img)
 
+    # Боссы
     elif call.data == "boss_16":
         img = open('Database/boss/pack.jpg', 'rb')
         img1 = open('Database/boss/bard.jpg', 'rb')
@@ -441,6 +438,7 @@ def callback_worker(call):
         bot.send_photo(call.message.chat.id, img5)
         bot.send_photo(call.message.chat.id, img6)
 
+    # Факела
     elif call.data == "fakel":
         img = open('Database/fakel/pack.jpg', 'rb')
         img1 = open('Database/fakel/bard.jpg', 'rb')
@@ -466,6 +464,7 @@ def callback_worker(call):
         bot.send_photo(call.message.chat.id, img6)
         bot.send_video(call.message.chat.id, video)
 
+    # Таблицы
     elif call.data == "adapt":
         msg = "Таблица адаптаций:"
         img = open('Database/table/adaptation.jpg', 'rb')
@@ -475,6 +474,12 @@ def callback_worker(call):
     elif call.data == "dusha":
         msg = "Таблица Снаряжения и Души:"
         img = open('Database/table/dusha.png', 'rb')
+        bot.send_message(call.message.chat.id, msg)
+        bot.send_photo(call.message.chat.id, img)
+
+    elif call.data == "suvenir":
+        msg = "Таблица Сувениров:"
+        img = open('Database/table/suvenir.jpg', 'rb')
         bot.send_message(call.message.chat.id, msg)
         bot.send_photo(call.message.chat.id, img)
 

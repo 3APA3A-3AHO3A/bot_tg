@@ -4,7 +4,6 @@ import openpyxl
 BOT_TOKEN = '5221109021:AAGl2b6Vs9Id1Yzss89l-34uwMkQcFNnETQ'
 BOT_TOKEN_logs = '5158112868:AAEKWw51sG5IT9Sxqbb4F1A6TTaaHOHyrQA'
 admin_id = 454589284
-admins = [454589284]
 
 excel_db = openpyxl.load_workbook('Database/database.xlsx')
 
