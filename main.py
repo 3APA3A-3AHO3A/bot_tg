@@ -304,13 +304,20 @@ def callback_worker(call):
 
     # Смотрители
     elif call.data == "svyatoy":
+        keyboard = types.InlineKeyboardMarkup()
+        keyboard.add(types.InlineKeyboardButton('Видео', url='https://youtu.be/Geq5h3rP_gM'))
         img1 = open('Database/smotr/svyat/svyat1.jpg', 'rb')
         img2 = open('Database/smotr/svyat/svyat2.jpg', 'rb')
         img3 = open('Database/smotr/svyat/svyat3.jpg', 'rb')
         img4 = open('Database/smotr/svyat/svyat4.jpg', 'rb')
         img5 = open('Database/smotr/svyat/svyat5.jpg', 'rb')
         img6 = open('Database/smotr/svyat/svyat6.jpg', 'rb')
-        video = open('Database/smotr/svyat/svyat.mp4', 'rb')
+        bot.send_photo(call.message.chat.id, img1)
+        bot.send_photo(call.message.chat.id, img2)
+        bot.send_photo(call.message.chat.id, img3)
+        bot.send_photo(call.message.chat.id, img4)
+        bot.send_photo(call.message.chat.id, img5)
+        bot.send_photo(call.message.chat.id, img6)
         bot.send_message(call.message.chat.id,
                          "Святой:\n" +
                          "Динамо: Щит дракона, выживание, дрогго\n" +
@@ -322,15 +329,8 @@ def callback_worker(call):
                          "Техника выпуска тоже важна. Сначала Динамо, после того, как смотритель кинул топор, "
                          "сразу всех остальных.\n" +
                          "Важно - никаких пиромагов, иначе проигрыш. Чарой лучше ставить расколенный доспех.\n" +
-                         "***Если Динамо не выживает с щитом порядка (квадрат), пробуйте барьер"
-                         )
-        bot.send_photo(call.message.chat.id, img1)
-        bot.send_photo(call.message.chat.id, img2)
-        bot.send_photo(call.message.chat.id, img3)
-        bot.send_photo(call.message.chat.id, img4)
-        bot.send_photo(call.message.chat.id, img5)
-        bot.send_photo(call.message.chat.id, img6)
-        bot.send_video(call.message.chat.id, video)
+                         "***Если Динамо не выживает с щитом порядка (квадрат), пробуйте барьер",
+                         reply_markup = keyboard)
 
     elif call.data == "prorok":
         img1 = open('Database/smotr/prorok/prorok1.jpg', 'rb')
@@ -339,6 +339,12 @@ def callback_worker(call):
         img4 = open('Database/smotr/prorok/prorok4.jpg', 'rb')
         img5 = open('Database/smotr/prorok/prorok5.jpg', 'rb')
         img6 = open('Database/smotr/prorok/prorok6.jpg', 'rb')
+        bot.send_photo(call.message.chat.id, img1)
+        bot.send_photo(call.message.chat.id, img2)
+        bot.send_photo(call.message.chat.id, img3)
+        bot.send_photo(call.message.chat.id, img4)
+        bot.send_photo(call.message.chat.id, img5)
+        bot.send_photo(call.message.chat.id, img6)
         bot.send_message(call.message.chat.id,
                          "Пророк:\n" +
                          "Динамо: Бастион, раскол, тирания\n" +
@@ -348,21 +354,22 @@ def callback_worker(call):
                          "Жрица Воды: Стойкость, выживание, щит порядка\n" +
                          "Князь Тыква: Священный огонь, исцеление, сказочный круг\n"
                          )
-        bot.send_photo(call.message.chat.id, img1)
-        bot.send_photo(call.message.chat.id, img2)
-        bot.send_photo(call.message.chat.id, img3)
-        bot.send_photo(call.message.chat.id, img4)
-        bot.send_photo(call.message.chat.id, img5)
-        bot.send_photo(call.message.chat.id, img6)
 
     elif call.data == "poryadok":
+        keyboard = types.InlineKeyboardMarkup()
+        keyboard.add(types.InlineKeyboardButton('Видео', url='https://youtu.be/OQ6LBEkHQ3I'))
         img1 = open('Database/smotr/poryadok/poryadok1.jpg', 'rb')
         img2 = open('Database/smotr/poryadok/poryadok2.jpg', 'rb')
         img3 = open('Database/smotr/poryadok/poryadok3.jpg', 'rb')
         img4 = open('Database/smotr/poryadok/poryadok4.jpg', 'rb')
         img5 = open('Database/smotr/poryadok/poryadok5.jpg', 'rb')
         img6 = open('Database/smotr/poryadok/poryadok6.jpg', 'rb')
-        video = open('Database/smotr/poryadok/poryadok.mp4', 'rb')
+        bot.send_photo(call.message.chat.id, img1)
+        bot.send_photo(call.message.chat.id, img2)
+        bot.send_photo(call.message.chat.id, img3)
+        bot.send_photo(call.message.chat.id, img4)
+        bot.send_photo(call.message.chat.id, img5)
+        bot.send_photo(call.message.chat.id, img6)
         bot.send_message(call.message.chat.id,
                          "Порядок:\n" +
                          "Голем: Щит дракона, раскол, зелье безумия, Спанчбокс\n" +
@@ -372,16 +379,8 @@ def callback_worker(call):
                          "Фехтовальщик: Каменная кожа/Щит дракона, священный огонь, барьер, Кицунэ\n" +
                          "Орфей: Щит дракона/каменная кожа, священный огонь, барьер, Крокко\n" +
                          "Высадка: первым Голем, за ним остальные под ноги смотрителю. "
-                         "Рудольфа можно заменить на Крокко/Чикабум"
-                         )
-        # bot.send_photo(call.message.chat.id, img1, img2, img3, img4, img5, img6)
-        bot.send_photo(call.message.chat.id, img1)
-        bot.send_photo(call.message.chat.id, img2)
-        bot.send_photo(call.message.chat.id, img3)
-        bot.send_photo(call.message.chat.id, img4)
-        bot.send_photo(call.message.chat.id, img5)
-        bot.send_photo(call.message.chat.id, img6)
-        bot.send_video(call.message.chat.id, video)
+                         "Рудольфа можно заменить на Крокко/Чикабум",
+                         reply_markup=keyboard)
 
     # Подземелья
     elif call.data == "razlom":
@@ -413,13 +412,6 @@ def callback_worker(call):
         img4 = open('Database/boss/afina.jpg', 'rb')
         img5 = open('Database/boss/sparki.jpg', 'rb')
         img6 = open('Database/boss/vor.jpg', 'rb')
-        bot.send_message(call.message.chat.id, "Бард (любая сборка): священный огонь, воодушевление, священный суд" +
-                         "\nКнязь Тыква: щит дракона, раскол, зелье безумия, священный суд" +
-                         "\nСпарки: раскол, комета, вдохновение, ураган" +
-                         "\nВорожей: раскол, щит дракона/каменная кожа, броня хаоса, священный суд" +
-                         "\nОккультист: берсерк, священный огонь, кровавый барьер, священный суд" +
-                         "\nАфина: берсерк, священный огонь, крылатое возрождение, священный суд"+
-                         "\nСборки могут отличаться, экспериментируйте")
         bot.send_photo(call.message.chat.id, img)
         bot.send_photo(call.message.chat.id, img1)
         bot.send_photo(call.message.chat.id, img2)
@@ -427,6 +419,13 @@ def callback_worker(call):
         bot.send_photo(call.message.chat.id, img4)
         bot.send_photo(call.message.chat.id, img5)
         bot.send_photo(call.message.chat.id, img6)
+        bot.send_message(call.message.chat.id, "Бард (любая сборка): священный огонь, воодушевление, священный суд" +
+                         "\nКнязь Тыква: щит дракона, раскол, зелье безумия, священный суд" +
+                         "\nСпарки: раскол, комета, вдохновение, ураган" +
+                         "\nВорожей: раскол, щит дракона/каменная кожа, броня хаоса, священный суд" +
+                         "\nОккультист: берсерк, священный огонь, кровавый барьер, священный суд" +
+                         "\nАфина: берсерк, священный огонь, крылатое возрождение, священный суд"+
+                         "\nСборки могут отличаться, экспериментируйте")
 
     elif call.data == "boss_any":
         img = open('Database/boss/any/pack.jpg', 'rb')
@@ -438,6 +437,13 @@ def callback_worker(call):
         img6 = open('Database/boss/any/boa.jpg', 'rb')
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(types.InlineKeyboardButton('Видео-прохождение', url='https://youtu.be/m4gGNVuGUNs'))
+        bot.send_photo(call.message.chat.id, img)
+        bot.send_photo(call.message.chat.id, img1)
+        bot.send_photo(call.message.chat.id, img2)
+        bot.send_photo(call.message.chat.id, img3)
+        bot.send_photo(call.message.chat.id, img4)
+        bot.send_photo(call.message.chat.id, img5)
+        bot.send_photo(call.message.chat.id, img6)
         bot.send_message(call.message.chat.id, "Питомцы на героях должны быть именно такими:"
                                                "\nТыква - сокол (м)"
                                                "\nСпарки - кицунэ (м)"
@@ -446,16 +452,11 @@ def callback_worker(call):
                                                "\nОрфей - ледышка"
                                                "\nМадам Боа - резвая летучая мышь",
                          reply_markup=keyboard)
-        bot.send_photo(call.message.chat.id, img)
-        bot.send_photo(call.message.chat.id, img1)
-        bot.send_photo(call.message.chat.id, img2)
-        bot.send_photo(call.message.chat.id, img3)
-        bot.send_photo(call.message.chat.id, img4)
-        bot.send_photo(call.message.chat.id, img5)
-        bot.send_photo(call.message.chat.id, img6)
 
     # Факела
     elif call.data == "fakel":
+        keyboard = types.InlineKeyboardMarkup()
+        keyboard.add(types.InlineKeyboardButton('Видео', url='https://youtu.be/G80d_E_vTB0'))
         img = open('Database/fakel/pack.jpg', 'rb')
         img1 = open('Database/fakel/bard.jpg', 'rb')
         img2 = open('Database/fakel/treant.jpg', 'rb')
@@ -463,14 +464,6 @@ def callback_worker(call):
         img4 = open('Database/fakel/chezh.jpg', 'rb')
         img5 = open('Database/fakel/fairy.jpg', 'rb')
         img6 = open('Database/fakel/mechnick.jpg', 'rb')
-        video = open('Database/fakel/fakel.mp4', 'rb')
-        bot.send_message(call.message.chat.id, "Бард : реанимация, оживление, крылатое возрождение, священный суд" +
-                         "\nТреант: реанимация, железная воля, крылатое возрождение, священный суд" +
-                         "\nДинамо: пыл битвы, лук порядка/проклятый доспех, крылатое возрождение, амбициозность" +
-                         "\nЧешуекрыл: чаша пожирателя, посох хаоса/проклятый доспех, крылатое возрождение, амбициозность" +
-                         "\nМечник: выживание, воодушевление, крылатое возрождение, священный суд" +
-                         "\nФейри: реанимация, выживание, крылатое возрождение, священный суд"
-                         )
         bot.send_photo(call.message.chat.id, img)
         bot.send_photo(call.message.chat.id, img1)
         bot.send_photo(call.message.chat.id, img2)
@@ -478,7 +471,14 @@ def callback_worker(call):
         bot.send_photo(call.message.chat.id, img4)
         bot.send_photo(call.message.chat.id, img5)
         bot.send_photo(call.message.chat.id, img6)
-        bot.send_video(call.message.chat.id, video)
+        bot.send_message(call.message.chat.id, "Создатель сборки на факела Сергей @IKREMEN"
+                    "\nБард : реанимация, оживление, крылатое возрождение, священный суд" +
+                    "\nТреант: реанимация, железная воля, крылатое возрождение, священный суд" +
+                    "\nДинамо: пыл битвы, лук порядка/проклятый доспех, крылатое возрождение, амбициозность" +
+                    "\nЧешуекрыл: чаша пожирателя, посох хаоса/проклятый доспех, крылатое возрождение, амбициозность" +
+                    "\nМечник: выживание, воодушевление, крылатое возрождение, священный суд" +
+                    "\nФейри: реанимация, выживание, крылатое возрождение, священный суд",
+                    reply_markup=keyboard)
 
     # Таблицы
     elif call.data == "adapt":
