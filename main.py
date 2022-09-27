@@ -88,7 +88,9 @@ def get_text_messages(message):
             key_minos = types.InlineKeyboardButton(text='Вождь Минотавров', callback_data='minos')
             key_treant = types.InlineKeyboardButton(text='Треант', callback_data='treant')
             key_fen = types.InlineKeyboardButton(text='Феникс', callback_data='fen')
+            key_major = types.InlineKeyboardButton(text='Мажор-сборка', callback_data='major')
             keyboard.add(
+                key_major,
                 key_sekach,
                 key_anub,
                 key_bard_bg,
@@ -285,9 +287,23 @@ def callback_worker(call):
             img = open('Database/sborki/bg/'+str(item)+'.jpg', 'rb')
             bot.send_message(call.message.chat.id, msg)
             bot.send_photo(call.message.chat.id, img)
+    if call.data == "major":
+        img1 = open('Database/sborki/bg/major/1.jpg', 'rb')
+        img2 = open('Database/sborki/bg/major/2.jpg', 'rb')
+        img3 = open('Database/sborki/bg/major/3.jpg', 'rb')
+        img4 = open('Database/sborki/bg/major/4.jpg', 'rb')
+        img5 = open('Database/sborki/bg/major/5.jpg', 'rb')
+        img6 = open('Database/sborki/bg/major/6.jpg', 'rb')
+        bot.send_photo(call.message.chat.id, img1)
+        bot.send_photo(call.message.chat.id, img2)
+        bot.send_photo(call.message.chat.id, img3)
+        bot.send_photo(call.message.chat.id, img4)
+        bot.send_photo(call.message.chat.id, img5)
+        bot.send_photo(call.message.chat.id, img6)
+        bot.send_message(call.message.chat.id, "Сборка на БГ от Сергея @IKREMEN")
 
     # Смотрители
-    if call.data == "svyatoy":
+    elif call.data == "svyatoy":
         img1 = open('Database/smotr/svyat/svyat1.jpg', 'rb')
         img2 = open('Database/smotr/svyat/svyat2.jpg', 'rb')
         img3 = open('Database/smotr/svyat/svyat3.jpg', 'rb')
