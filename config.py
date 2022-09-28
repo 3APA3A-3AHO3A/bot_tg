@@ -6,7 +6,6 @@ BOT_TOKEN_logs = '5158112868:AAEKWw51sG5IT9Sxqbb4F1A6TTaaHOHyrQA'
 admin_id = 454589284
 
 excel_db = openpyxl.load_workbook('Database/database.xlsx')
-
 ex_user = excel_db.get_sheet_by_name("Пользователи")
 ex_swats = excel_db.get_sheet_by_name("Спецназ")
 worksheet_build_pvp = excel_db.get_sheet_by_name("ПВП")
@@ -32,3 +31,9 @@ for i in range(worksheet_build_pvp.max_row - 1):
 for i in range(worksheet_build_bg.max_row - 1):
     id_bg = worksheet_build_bg.cell(row=(i+2), column=1).value
     bg.append(id_bg)
+def author(chat_id, list):
+    strid = str(chat_id)
+    for item in list:
+        if str(item) == strid:
+            return True
+    return False

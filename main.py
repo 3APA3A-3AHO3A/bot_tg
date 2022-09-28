@@ -12,20 +12,12 @@ bot = telebot.TeleBot(config.BOT_TOKEN)
 bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 
 
-def author(chat_id, list):
-    strid = str(chat_id)
-    for item in list:
-        if str(item) == strid:
-            return True
-    return False
-
-
 @bot.message_handler(commands=['start'])
 def start_message(message):
     user_name = message.from_user.username
     first_name = message.from_user.first_name
 
-    if author(message.chat.id, config.users):
+    if config.author(message.chat.id, config.users):
         keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard1.row('ПВП', 'БГ', 'Локации', 'Таблицы', 'Нарсия')
         bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name +
@@ -49,7 +41,7 @@ def start_message(message):
 def get_text_messages(message):
     user_name = message.from_user.username
     first_name = message.from_user.first_name
-    if author(message.chat.id, config.users):
+    if config.author(message.chat.id, config.users):
         bot_logs.send_message(config.admin_id, text='Пользователь {1} https://t.me/{0}'
                                                     ' ID: `'.format(user_name, first_name) +
         str(message.chat.id) + '`' + " отправил: " + message.text, parse_mode='Markdown')
@@ -193,7 +185,7 @@ def get_text_messages(message):
             )
             bot.send_message(message.from_user.id, text='Выбери интересующие таблицы:', reply_markup=keyboard)
         elif message.text.lower() == "пвп":
-            if author(message.chat.id, config.swats):
+            if config.author(message.chat.id, config.swats):
                 keyboard = types.InlineKeyboardMarkup()
                 key_dinamo = types.InlineKeyboardButton(text='Динамо', callback_data='dinamo')
                 key_chezh_poryadok = types.InlineKeyboardButton(text='Чешуекрыл(Порядок)',
