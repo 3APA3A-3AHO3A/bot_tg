@@ -509,7 +509,8 @@ def callback_worker(call):
         bot.send_photo(call.message.chat.id, img4)
         bot.send_photo(call.message.chat.id, img5)
         bot.send_photo(call.message.chat.id, img6)
-        bot.send_message(call.message.chat.id, "Питомцы на героях должны быть именно такими:"
+        bot.send_message(call.message.chat.id, "Важно! Никаких пиромагов, тамплиеров, мастеров клинка чарами"
+                                               "\nПитомцы на героях должны быть именно такими:"
                                                "\nТыква - сокол (м)"
                                                "\nСпарки - кицунэ (м)"
                                                "\nСудья Дэд - ангелок"
