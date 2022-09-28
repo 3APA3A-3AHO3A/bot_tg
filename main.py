@@ -27,7 +27,7 @@ def start_message(message):
 
     if author(message.chat.id, config.users):
         keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы', 'Нарсия')
+        keyboard1.row('ПВП', 'БГ', 'Локации', 'Таблицы', 'Нарсия')
         bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name +
                          ", бот создан KnightsOfNarsia. \nСправка /help ", reply_markup=keyboard1)
         bot_logs.send_message(config.admin_id, text='Пользователь, у которого есть доступ, {1} https://t.me/{0}'
@@ -71,7 +71,7 @@ def get_text_messages(message):
                              '\nНаш канал по бесплатным самоцветам по ссылке ниже.' +
                              '\nЕсли остались вопросы или пожелания, напишите создателю бота.', reply_markup=keyboard)
 
-        elif message.text.title() == "Нарсия":
+        elif message.text.lower() == "нарсия":
             keyboard = types.InlineKeyboardMarkup()
             key_kamen = types.InlineKeyboardButton(text='Камень', callback_data='kamen')
             key_spam = types.InlineKeyboardButton(text='Спам-пачка', callback_data='spam')
@@ -89,7 +89,7 @@ def get_text_messages(message):
             )
             bot.send_message(message.from_user.id, text='Выбери интересующую механику:', reply_markup=keyboard)
 
-        elif message.text.title() == "Бг":
+        elif message.text.lower() == "бг":
             keyboard = types.InlineKeyboardMarkup()
             key_sekach = types.InlineKeyboardButton(text='Секач', callback_data='sekach')
             key_anub = types.InlineKeyboardButton(text='Анубис', callback_data='anub')
@@ -113,17 +113,17 @@ def get_text_messages(message):
             )
             bot.send_message(message.from_user.id, text='Выбери интересующую сборку:', reply_markup=keyboard)
 
-        elif message.text.title() == "Локации":
+        elif message.text.lower() == "локации":
             keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard1.row('Смотрители', 'Босс', 'Факела', 'Подземелья', 'Назад')
             bot.send_message(message.chat.id, "Выбери интересующую локацию.", reply_markup=keyboard1)
 
-        elif message.text.title() == "Назад":
+        elif message.text.lower() == "назад":
             keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы', 'Нарсия')
             bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard1)
 
-        elif message.text.title() == "Смотрители":
+        elif message.text.lower() == "смотрители":
             keyboard = types.InlineKeyboardMarkup()
             key_svyatoy = types.InlineKeyboardButton(text='Святой', callback_data='svyatoy')
             key_poryadok = types.InlineKeyboardButton(text='Порядок', callback_data='poryadok')
@@ -135,7 +135,7 @@ def get_text_messages(message):
             )
             bot.send_message(message.from_user.id, text='Выбери интересующего смотрителя:', reply_markup=keyboard)
 
-        elif message.text.title() == "Подземелья":
+        elif message.text.lower() == "подземелья":
             keyboard = types.InlineKeyboardMarkup()
             key_razlom = types.InlineKeyboardButton(text='Разломы/пустоши/саммиты', callback_data='razlom')
             key_more = types.InlineKeyboardButton(text='Море/Меса/Лава', callback_data='more')
@@ -145,7 +145,7 @@ def get_text_messages(message):
             )
             bot.send_message(message.from_user.id, text='Выбери интересующее подземелье:', reply_markup=keyboard)
 
-        elif message.text.title() == "Босс":
+        elif message.text.lower() == "босс":
             keyboard = types.InlineKeyboardMarkup()
             key_boss_16 = types.InlineKeyboardButton(text='16-й уровень', callback_data='boss_16')
             key_boss_any = types.InlineKeyboardButton(text='Любой уровень', callback_data='boss_any')
@@ -155,7 +155,7 @@ def get_text_messages(message):
             )
             bot.send_message(message.from_user.id, text='Выбери интересующий уровень босса:', reply_markup=keyboard)
 
-        elif message.text.title() == "Факела":
+        elif message.text.lower() == "факела":
             keyboard = types.InlineKeyboardMarkup()
             key_fakel = types.InlineKeyboardButton(text='Адский', callback_data='fakel')
             keyboard.add(
@@ -163,7 +163,7 @@ def get_text_messages(message):
             )
             bot.send_message(message.from_user.id, text='Выбери интересующий уровень факела:', reply_markup=keyboard)
 
-        elif message.text.title() == "Таблицы":
+        elif message.text.lower() == "таблицы":
             keyboard = types.InlineKeyboardMarkup()
             key_adapt = types.InlineKeyboardButton(text='Адаптация', callback_data='adapt')
             key_accessory = types.InlineKeyboardButton(text='Экипировка', callback_data='accessory')
@@ -192,7 +192,7 @@ def get_text_messages(message):
                 key_sozv
             )
             bot.send_message(message.from_user.id, text='Выбери интересующие таблицы:', reply_markup=keyboard)
-        elif message.text.title() == "Пвп":
+        elif message.text.lower() == "пвп":
             if author(message.chat.id, config.swats):
                 keyboard = types.InlineKeyboardMarkup()
                 key_dinamo = types.InlineKeyboardButton(text='Динамо', callback_data='dinamo')
