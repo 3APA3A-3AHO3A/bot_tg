@@ -12,17 +12,9 @@ bot = telebot.TeleBot(config.BOT_TOKEN)
 bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 
 
-def author(chat_id):
+def author(chat_id, list):
     strid = str(chat_id)
-    for item in config.users:
-        if str(item) == strid:
-            return True
-    return False
-
-
-def swat(chat_id):
-    strid = str(chat_id)
-    for item in config.swats:
+    for item in list:
         if str(item) == strid:
             return True
     return False
@@ -33,34 +25,34 @@ def start_message(message):
     user_name = message.from_user.username
     first_name = message.from_user.first_name
 
-    if author(message.chat.id):
+    if author(message.chat.id, config.users):
         keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы', 'Нарсия')
         bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name +
                          ", бот создан KnightsOfNarsia. \nСправка /help ", reply_markup=keyboard1)
         bot_logs.send_message(config.admin_id, text='Пользователь, у которого есть доступ, {1} https://t.me/{0}'
-        ' запустил бота. ID: ```'.format(user_name, first_name) +
-        str(message.chat.id) + '```', parse_mode='Markdown')
+        ' запустил бота. ID: `'.format(user_name, first_name) +
+        str(message.chat.id) + '`', parse_mode='Markdown')
 
     else:
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(types.InlineKeyboardButton('Создатель бота', url='https://t.me/Vadik3AHO3A'))
-        bot.send_message(message.chat.id, 'Тебе сюда нельзя. Твой ID: ```' + str(message.chat.id) +
-                         '```\nОтправьте ID, представленный выше, и игровой Никнейм создателю бота.',
+        bot.send_message(message.chat.id, 'Тебе сюда нельзя. Твой ID: `' + str(message.chat.id) +
+                         '`\nОтправьте ID, представленный выше, и игровой Никнейм создателю бота.',
                          parse_mode='Markdown', reply_markup=keyboard)
         bot_logs.send_message(config.admin_id, text='Пользователь, у которого нет доступа, {1} https://t.me/{0}'
-                                                    ' запустил бота. ID: ```'.format(user_name, first_name) +
-                                                    str(message.chat.id) + '```', parse_mode='Markdown')
+                                                    ' запустил бота. ID: `'.format(user_name, first_name) +
+                                                    str(message.chat.id) + '`', parse_mode='Markdown')
 
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     user_name = message.from_user.username
     first_name = message.from_user.first_name
-    if author(message.chat.id):
+    if author(message.chat.id, config.users):
         bot_logs.send_message(config.admin_id, text='Пользователь {1} https://t.me/{0}'
-                                                    ' ID: ```'.format(user_name, first_name) +
-        str(message.chat.id) + '```' + " отправил: " + message.text, parse_mode='Markdown')
+                                                    ' ID: `'.format(user_name, first_name) +
+        str(message.chat.id) + '`' + " отправил: " + message.text, parse_mode='Markdown')
         if message.text == "/help":
             keyboard = types.InlineKeyboardMarkup()
             keyboard.add(types.InlineKeyboardButton('Создатель бота', url='https://t.me/Vadik3AHO3A'))
@@ -201,7 +193,7 @@ def get_text_messages(message):
             )
             bot.send_message(message.from_user.id, text='Выбери интересующие таблицы:', reply_markup=keyboard)
         elif message.text.title() == "Пвп":
-            if swat(message.chat.id):
+            if author(message.chat.id, config.swats):
                 keyboard = types.InlineKeyboardMarkup()
                 key_dinamo = types.InlineKeyboardButton(text='Динамо', callback_data='dinamo')
                 key_chezh_poryadok = types.InlineKeyboardButton(text='Чешуекрыл(Порядок)',
@@ -242,20 +234,20 @@ def get_text_messages(message):
                                  reply_markup=keyboard)
             else:
                 bot_logs.send_message(config.admin_id, text='Пользователь {1} https://t.me/{0} '
-                                                            'ID: ```'.format(user_name, first_name) +
-                str(message.chat.id) + '```' + " без доступа к ПВП", parse_mode='Markdown')
-                bot.send_message(message.from_user.id, text='Для доступа к ПВП пользователь должен находиться'
+                                                            'ID: `'.format(user_name, first_name) +
+                str(message.chat.id) + '`' + " без доступа к ПВП", parse_mode='Markdown')
+                bot.send_message(message.from_user.id, text='Для доступа к ПВП пользователь должен находиться '
                                                             'в группах Спецназ или Штурмовики.')
 
     else:
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(types.InlineKeyboardButton('Создатель бота', url='https://t.me/Vadik3AHO3A'))
-        bot.send_message(message.chat.id, 'Тебе сюда нельзя. Твой ID: ```' + str(message.chat.id) +
-                         '```\nОтправьте ID, представленный выше, и игровой Никнейм создателю бота.',
+        bot.send_message(message.chat.id, 'Тебе сюда нельзя. Твой ID: `' + str(message.chat.id) +
+                         '`\nОтправьте ID, представленный выше, и игровой Никнейм создателю бота.',
                          parse_mode='Markdown', reply_markup=keyboard)
         bot_logs.send_message(config.admin_id, text='Пользователь, у которого нет доступа, {1} https://t.me/{0}'
-                                                    ' ID: ```'.format(user_name, first_name) +
-        str(message.chat.id) + '```' + " отправил: " + message.text, parse_mode='Markdown')
+                                                    ' ID: `'.format(user_name, first_name) +
+        str(message.chat.id) + '`' + " отправил: " + message.text, parse_mode='Markdown')
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
