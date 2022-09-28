@@ -120,7 +120,7 @@ def get_text_messages(message):
 
         elif message.text.lower() == "назад":
             keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            keyboard1.row('Пвп', 'Бг', 'Локации', 'Таблицы', 'Нарсия')
+            keyboard1.row('ПВП', 'БГ', 'Локации', 'Таблицы', 'Нарсия')
             bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard1)
 
         elif message.text.lower() == "смотрители":
