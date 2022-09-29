@@ -12,13 +12,14 @@ def call_table(message):
     key_dop = types.InlineKeyboardButton(text='Допы', callback_data='dop')
     key_proryv = types.InlineKeyboardButton(text='Прорыв', callback_data='proryv')
     key_pet = types.InlineKeyboardButton(text='Питомцы', callback_data='pet')
-    key_setka = types.InlineKeyboardButton(text='Звездная сетка', callback_data='setka')
+    key_setka = types.InlineKeyboardButton(text='Сетка', callback_data='setka')
     key_abbreviation = types.InlineKeyboardButton(text='Аббревиатуры', callback_data='abbreviation')
     key_titul = types.InlineKeyboardButton(text='Титул', callback_data='titul')
     key_dusha = types.InlineKeyboardButton(text='Душа', callback_data='dusha')
     key_suvenir = types.InlineKeyboardButton(text='Сувенир', callback_data='suvenir')
     key_relik = types.InlineKeyboardButton(text='Реликвия', callback_data='relik')
     key_sozv = types.InlineKeyboardButton(text='Созвездия', callback_data='sozv')
+    key_gaid_pvp = types.InlineKeyboardButton(text='ПВП', callback_data='gaid_pvp')
     keyboard.add(
         key_titul,
         key_proryv,
@@ -31,10 +32,24 @@ def call_table(message):
         key_pet,
         key_setka,
         key_abbreviation,
-        key_sozv
+        key_sozv,
+        key_gaid_pvp
     )
-    bot.send_message(message.from_user.id, text='Выбери интересующие таблицы:', reply_markup=keyboard)
+    bot.send_message(message.from_user.id, text='Выбери интересующую команду:', reply_markup=keyboard)
 
+
+def gaid_pvp(message):
+    msg = "Гайд от @IKREMEN по ПВП-режимам (Арена, Повелитель Мира, Атака Фортов):" \
+          "\n\n1. Высадка героев по линиям:" \
+          "\nПервая: три героя, которые собраны на ХП, Сопротивление, понижение урона." \
+          "\nВторая: дебаф- и сейв-герои." \
+          "\nТретья: дамаг- и рес-герои." \
+          "\n\n2. В каждой пачке: Хиллер и дамагер, это и питомцев касается." \
+          "\n\n3. В каждой пачке: Один спектр и одно ПВО - обязательно, одна комета - ситуационно." \
+          "\n\n4. В каждой пачке: Древнее знание, кошмар, гниль, танец феи и другие топ квадраты." \
+          "\n\n5. В каждой пачке: Один из шести героев собран на уклон." \
+          "\n\n6. Сборка зависит от прокачки прорыва, реликвии, экипировки."
+    bot.send_message(message, msg)
 
 def adapt(message):
     msg = "Таблица адаптаций:"

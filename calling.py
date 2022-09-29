@@ -21,7 +21,7 @@ def call_user(message):
 
         if message.text == "/start":
             keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            keyboard1.row('ПВП', 'БГ', 'Локации', 'Таблицы', 'Нарсия')
+            keyboard1.row('ПВП', 'БГ', 'Локации', 'Справки', 'Нарсия')
             bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name +
                              ", бот создан KnightsOfNarsia. \nСправка /help ", reply_markup=keyboard1)
 
@@ -38,8 +38,8 @@ def call_user(message):
                              '\nПВП - актуальные сборки героев для ПВП режимов.' +
                              '\nБГ - сборки для прохождения Битвы Гильдий.' +
                              '\nЛокации - сборки для прохождения командных подземелий, смотрителя, факела, босса.' +
-                             '\nТаблицы - сводные таблицы по игровому процессу.'
-                             '\nНарсия - обучение игровому процессу в Нарсии' +
+                             '\nСправки - сводные таблицы, гайды, обозначения.'
+                             '\nНарсия - обучение игровому процессу в Нарсии.' +
                              '\nНаш канал по бесплатным самоцветам по ссылке ниже.' +
                              '\nЕсли остались вопросы или пожелания, напишите создателю бота.', reply_markup=keyboard)
 
@@ -56,7 +56,7 @@ def call_user(message):
 
         elif message.text.lower() == "назад":
             keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            keyboard1.row('ПВП', 'БГ', 'Локации', 'Таблицы', 'Нарсия')
+            keyboard1.row('ПВП', 'БГ', 'Локации', 'Справки', 'Нарсия')
             bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard1)
 
         elif message.text.lower() == "смотрители":
@@ -95,7 +95,7 @@ def call_user(message):
         elif message.text.lower() == "факела":
             location.fakel(message.from_user.id)
 
-        elif message.text.lower() == "таблицы":
+        elif message.text.lower() == "справки":
             table.call_table(message)
 
         elif message.text.lower() == "пвп":

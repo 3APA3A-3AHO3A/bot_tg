@@ -128,3 +128,6 @@ def callback_user(message, data):
 
     elif data == "abbreviation":
         table.abbr(message)
+
+    elif data == 'gaid_pvp':
+        table.gaid_pvp(message)
