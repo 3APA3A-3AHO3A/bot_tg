@@ -17,23 +17,25 @@ pvp = []
 bg = []
 
 for i in range(ex_user.max_row - 1):
-    id_users = ex_user.cell(row=(i+2), column=1).value
+    id_users = ex_user.cell(row=(i + 2), column=1).value
     users.append(id_users)
 
 for i in range(ex_swats.max_row - 1):
-    id_swats = ex_swats.cell(row=(i+2), column=1).value
+    id_swats = ex_swats.cell(row=(i + 2), column=1).value
     swats.append(id_swats)
 
 for i in range(worksheet_build_pvp.max_row - 1):
-    id_pvp = worksheet_build_pvp.cell(row=(i+2), column=1).value
+    id_pvp = worksheet_build_pvp.cell(row=(i + 2), column=1).value
     pvp.append(id_pvp)
 
 for i in range(worksheet_build_bg.max_row - 1):
-    id_bg = worksheet_build_bg.cell(row=(i+2), column=1).value
+    id_bg = worksheet_build_bg.cell(row=(i + 2), column=1).value
     bg.append(id_bg)
-def author(chat_id, list):
+
+
+def author(chat_id, us_list):
     strid = str(chat_id)
-    for item in list:
+    for item in us_list:
         if str(item) == strid:
             return True
     return False
