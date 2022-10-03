@@ -8,12 +8,12 @@ bot = telebot.TeleBot(config.BOT_TOKEN)
 def fakel(message):
     keyboard = types.InlineKeyboardMarkup()
     keyboard.add(types.InlineKeyboardButton('Видео', url='https://youtu.be/G80d_E_vTB0'))
-    img = open('Database/fakel/pack.jpg', 'rb')
+    img = open('Database/fakel/pack.png', 'rb')
     img1 = open('Database/fakel/bard.jpg', 'rb')
     img2 = open('Database/fakel/treant.jpg', 'rb')
     img3 = open('Database/fakel/dino.jpg', 'rb')
     img4 = open('Database/fakel/chezh.jpg', 'rb')
-    img5 = open('Database/fakel/fairy.jpg', 'rb')
+    img5 = open('Database/fakel/okkult.jpg', 'rb')
     img6 = open('Database/fakel/mechnick.jpg', 'rb')
     bot.send_photo(message, img)
     bot.send_photo(message, img1)
@@ -28,7 +28,7 @@ def fakel(message):
                      "\nДинамо: пыл битвы, лук порядка/проклятый доспех, крылатое возрождение, амбициозность" +
                      "\nЧешуекрыл: чаша пожирателя, посох хаоса/проклятый доспех, крылатое возрождение, амбициозность" +
                      "\nМечник: выживание, воодушевление, крылатое возрождение, священный суд" +
-                     "\nФейри: реанимация, выживание, крылатое возрождение, священный суд",
+                     "\nОккультист: крепкая связь, выживание, крылатое возрождение, печать бездны",
                      reply_markup=keyboard)
 
 def poryadok(message):
