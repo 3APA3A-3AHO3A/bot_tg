@@ -5,28 +5,29 @@ git pull
 """
 
 
-import telebot
+from aiogram import Bot, Dispatcher, executor, types
 import config
-import callback
-import calling
+import msg_us
+import call_us
 
 
-bot = telebot.TeleBot(config.BOT_TOKEN)
+bot = Bot(token=config.BOT_TOKEN)
+bot_logs = Bot(token=config.BOT_TOKEN_logs)
+dp = Dispatcher(bot)
 
 
-@bot.message_handler(content_types=['text'])
-def get_text_messages(message):
-    calling.call_user(message)
+@dp.message_handler(content_types=['text'])
+async def get_text_messages(message: types.Message):
+    await msg_us.answer_message(message)
 
 
-@bot.callback_query_handler(func=lambda call: True)
-def callback_worker(call):
-    callback.callback_user(call.message.chat.id, call.data)
+@dp.callback_query_handler()
+async def callback_worker(callback: types.CallbackQuery):
+    await call_us.answer_callback(callback)
 
 
 if __name__ == '__main__':
     try:
-        bot.infinity_polling()
-        # bot.polling(none_stop=True)
+        executor.start_polling(dp, skip_updates=True)
     except:
         pass
