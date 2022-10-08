@@ -35,6 +35,7 @@ def callback_user(message, data):
             img = open('Database/sborki/bg/'+str(item)+'.jpg', 'rb')
             bot.send_message(message, msg)
             bot.send_photo(message, img)
+
     if data == "major":
         bot.send_media_group(message, [types.InputMediaPhoto(open('Database/sborki/bg/major/1.jpg', 'rb'),
                                                              caption="Сборка на БГ от Сергея @IKREMEN"),
@@ -125,6 +126,3 @@ def callback_user(message, data):
 
     elif data == 'gaid_pvp':
         table.gaid_pvp(message)
-
-    else:
-        bot.send_message(message, "Не знаю такой команды.")
