@@ -15,6 +15,7 @@ users = []
 swats = []
 pvp = []
 bg = []
+# test_users = [1729215365, 454589284]
 
 for i in range(ex_user.max_row - 1):
     id_users = ex_user.cell(row=(i + 2), column=1).value
