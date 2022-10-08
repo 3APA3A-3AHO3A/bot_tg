@@ -30,7 +30,10 @@ def message_mailing(message):
     else:
         bot.send_message(message.chat.id, text='Рассылка начата!')
         for i in config.users:
-            bot.send_message(i, text="Сообщение от @{0}\n\n".format(user_name)+str(text))
+            try:
+                bot.send_message(i, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
+            except:
+                pass
         bot.send_message(message.chat.id, text=' Рассылка завершена!')
 
 
