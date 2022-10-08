@@ -15,8 +15,8 @@ def call_user(message):
     first_name = message.from_user.first_name
     if config.author(message.chat.id, config.users):
         bot_logs.send_message(config.admin_id, text='Пользователь {1} https://t.me/{0}'
-                                                    ' ID: <i><b>'.format(user_name, first_name) +
-                                                    str(message.chat.id) + '</b></i> отправил: ' + message.text,
+                                                    ' ID: <code>'.format(user_name, first_name) +
+                                                    str(message.chat.id) + '</code> отправил: ' + message.text,
                               parse_mode='HTML')
 
         if message.text == "/start":
@@ -104,10 +104,10 @@ def call_user(message):
     else:
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(types.InlineKeyboardButton('Создатель бота', url='https://t.me/Vadik3AHO3A'))
-        bot.send_message(message.chat.id, 'Тебе сюда нельзя. Твой ID: `' + str(message.chat.id) +
-                         '`\nОтправьте ID, представленный выше, и игровой Никнейм создателю бота.',
-                         parse_mode='markdown', reply_markup=keyboard)
+        bot.send_message(message.chat.id, 'Тебе сюда нельзя. Твой ID: <code>' + str(message.chat.id) +
+                         '</code>\nОтправьте ID, представленный выше, и игровой Никнейм создателю бота.',
+                         parse_mode='HTML', reply_markup=keyboard)
         bot_logs.send_message(config.admin_id, text='Пользователь, у которого нет доступа, {1} https://t.me/{0}'
-                                                    ' ID: <i><b>'.format(user_name, first_name) +
-                                                    str(message.chat.id) + "</b></i> отправил: " + message.text,
+                                                    ' ID: <code>'.format(user_name, first_name) +
+                                                    str(message.chat.id) + "</code> отправил: " + message.text,
                               parse_mode='HTML')
