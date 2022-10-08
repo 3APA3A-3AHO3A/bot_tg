@@ -125,3 +125,6 @@ def callback_user(message, data):
 
     elif data == 'gaid_pvp':
         table.gaid_pvp(message)
+
+    else:
+        bot.send_message(message, "Не знаю такой команды.")
