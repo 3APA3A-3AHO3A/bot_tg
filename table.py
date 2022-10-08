@@ -114,10 +114,9 @@ def dop(message):
 
 
 def proryv(message):
-    msg = "Таблица прорывов:"
-    img = open('Database/table/breakthrough.jpg', 'rb')
-    bot.send_message(message, msg)
-    bot.send_photo(message, img)
+    bot.send_media_group(message, [types.InputMediaPhoto(open('Database/table/proryv.jpg', 'rb'),
+                                                         caption="Таблица прорывов."),
+                                   types.InputMediaPhoto(open('Database/table/proryv2.jpg', 'rb'))])
 
 
 def pet(message):
