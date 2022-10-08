@@ -15,9 +15,9 @@ def call_user(message):
     first_name = message.from_user.first_name
     if config.author(message.chat.id, config.users):
         bot_logs.send_message(config.admin_id, text='Пользователь {1} https://t.me/{0}'
-                                                    ' ID: `'.format(user_name, first_name) +
-                                                    str(message.chat.id) + '`' + " отправил: " + message.text,
-                              parse_mode='Markdown')
+                                                    ' ID: <i><b>'.format(user_name, first_name) +
+                                                    str(message.chat.id) + '</b></i> отправил: ' + message.text,
+                              parse_mode='HTML')
 
         if message.text == "/start":
             keyboard1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -106,8 +106,8 @@ def call_user(message):
         keyboard.add(types.InlineKeyboardButton('Создатель бота', url='https://t.me/Vadik3AHO3A'))
         bot.send_message(message.chat.id, 'Тебе сюда нельзя. Твой ID: `' + str(message.chat.id) +
                          '`\nОтправьте ID, представленный выше, и игровой Никнейм создателю бота.',
-                         parse_mode='Markdown', reply_markup=keyboard)
+                         parse_mode='markdown', reply_markup=keyboard)
         bot_logs.send_message(config.admin_id, text='Пользователь, у которого нет доступа, {1} https://t.me/{0}'
-                                                    ' ID: `'.format(user_name, first_name) +
-                                                    str(message.chat.id) + '`' + " отправил: " + message.text,
-                              parse_mode='Markdown')
+                                                    ' ID: <i><b>'.format(user_name, first_name) +
+                                                    str(message.chat.id) + "</b></i> отправил: " + message.text,
+                              parse_mode='HTML')

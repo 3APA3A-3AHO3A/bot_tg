@@ -60,9 +60,9 @@ def call_pvp(message):
                          reply_markup=keyboard)
     else:
         bot_logs.send_message(config.admin_id, text='Пользователь {1} https://t.me/{0} '
-                                                    'ID: `'.format(user_name, first_name) +
-                                                    str(message.chat.id) + '`' + " без доступа к ПВП",
-                              parse_mode='Markdown')
+                                                    'ID: <i><b>'.format(user_name, first_name) +
+                                                    str(message.chat.id) + "</b></i> без доступа к ПВП",
+                              parse_mode='HTML')
         bot.send_message(message.from_user.id, text='Для доступа к ПВП пользователь должен находиться '
                                                     'в группах Спецназ или Штурмовики.')
 
