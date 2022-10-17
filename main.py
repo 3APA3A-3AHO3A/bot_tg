@@ -23,7 +23,6 @@ def send_mail(message):
 
 def message_mailing(message):
     user_name = message.from_user.username
-    first_name = message.from_user.first_name
     text = message.text
     if message.text.startswith('-'):
         bot.send_message(message.chat.id, text="Рассылка отменена")
@@ -50,6 +49,5 @@ def callback_worker(call):
 if __name__ == '__main__':
     try:
         bot.infinity_polling()
-        # bot.polling(none_stop=True)
     except:
         pass

@@ -59,7 +59,7 @@ def call_pvp(message):
         bot.send_message(message.from_user.id, text='Выбери интересующую сборку героя:',
                          reply_markup=keyboard)
     else:
-        bot_logs.send_message(config.admin_id, text='Пользователь {1} https://t.me/{0} '
+        bot_logs.send_message(config.admin_id, text='Пользователь {1} @{0} '
                                                     'ID: <code>'.format(user_name, first_name) +
                                                     str(message.chat.id) + "</code> без доступа к ПВП",
                               parse_mode='HTML')
