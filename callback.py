@@ -1,128 +1,130 @@
 import telebot
+import build
 import config
 import location
 import narsiya
 import table
-from telebot import types
-
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
 
 
-def callback_user(message, data):
+def callback_user(call):
     # ПВП
-    strid = str(data)
+    strid = str(call.data)
     for index, item in enumerate(config.pvp):
         if str(item) == strid:
-            msg = "Герой: " + str(config.worksheet_build_pvp.cell(row=int(index)+2, column=2).value) + \
-                  "\nТалант: " + str(config.worksheet_build_pvp.cell(row=int(index)+2, column=3).value) + \
-                  "\nЭмблема: " + str(config.worksheet_build_pvp.cell(row=int(index)+2, column=4).value) + \
-                  "\nКвадрат: " + str(config.worksheet_build_pvp.cell(row=int(index)+2, column=5).value) + \
-                  "\nЧара: " + str(config.worksheet_build_pvp.cell(row=int(index)+2, column=6).value) + \
-                  "\nСозвездия: " + str(config.worksheet_build_pvp.cell(row=int(index)+2, column=7).value)
-            img = open('Database/sborki/'+str(item)+'.jpg', 'rb')
-            bot.send_message(message, msg)
-            bot.send_photo(message, img)
+            msg = "Герой: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=2).value) + \
+                  "\nТалант: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=3).value) + \
+                  "\nЭмблема: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=4).value) + \
+                  "\nКвадрат: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=5).value) + \
+                  "\nЧара: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=6).value) + \
+                  "\nСозвездия: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=7).value)
+            img = open('Database/sborki/' + str(item) + '.jpg', 'rb')
+            media = telebot.types.InputMediaPhoto(img, caption=msg)
+            bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
+                                   media=media, reply_markup=build.keyboard_pvp())
 
     # БГ
     for index, item in enumerate(config.bg):
         if str(item) == strid:
-            msg = "Герой: " + str(config.worksheet_build_bg.cell(row=int(index)+2, column=2).value) + \
-                  "\nТалант: " + str(config.worksheet_build_bg.cell(row=int(index)+2, column=3).value) + \
-                  "\nЭмблема: " + str(config.worksheet_build_bg.cell(row=int(index)+2, column=4).value) + \
-                  "\nКвадрат: " + str(config.worksheet_build_bg.cell(row=int(index)+2, column=5).value) + \
-                  "\nЧара: " + str(config.worksheet_build_bg.cell(row=int(index)+2, column=6).value)
-            img = open('Database/sborki/bg/'+str(item)+'.jpg', 'rb')
-            bot.send_message(message, msg)
-            bot.send_photo(message, img)
+            msg = "Герой: " + str(config.worksheet_build_bg.cell(row=int(index) + 2, column=2).value) + \
+                  "\nТалант: " + str(config.worksheet_build_bg.cell(row=int(index) + 2, column=3).value) + \
+                  "\nЭмблема: " + str(config.worksheet_build_bg.cell(row=int(index) + 2, column=4).value) + \
+                  "\nКвадрат: " + str(config.worksheet_build_bg.cell(row=int(index) + 2, column=5).value) + \
+                  "\nЧара: " + str(config.worksheet_build_bg.cell(row=int(index) + 2, column=6).value)
+            img = open('Database/sborki/bg/' + str(item) + '.jpg', 'rb')
+            media = telebot.types.InputMediaPhoto(img, caption=msg)
+            bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
+                                   media=media, reply_markup=build.keyboard_bg())
 
-    if data == "major":
-        bot.send_media_group(message, [types.InputMediaPhoto(open('Database/sborki/bg/major/1.jpg', 'rb'),
-                                                             caption="Сборка на БГ от Сергея @IKREMEN"),
-                                       types.InputMediaPhoto(open('Database/sborki/bg/major/2.jpg', 'rb')),
-                                       types.InputMediaPhoto(open('Database/sborki/bg/major/3.jpg', 'rb')),
-                                       types.InputMediaPhoto(open('Database/sborki/bg/major/4.jpg', 'rb')),
-                                       types.InputMediaPhoto(open('Database/sborki/bg/major/5.jpg', 'rb')),
-                                       types.InputMediaPhoto(open('Database/sborki/bg/major/6.jpg', 'rb'))])
+    if call.data == "major":
+        media = [telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/1.jpg', 'rb'),
+                                               caption="Сборка на БГ от Сергея @IKREMEN"),
+                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/2.jpg', 'rb')),
+                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/3.jpg', 'rb')),
+                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/4.jpg', 'rb')),
+                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/5.jpg', 'rb')),
+                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/6.jpg', 'rb'))]
+        bot.send_media_group(call.message.chat.id, media)
 
     # Нарсия
-    elif data == "kamen":
-        narsiya.kamen(message)
+    elif call.data == "kamen":
+        narsiya.kamen(call)
 
-    elif data == "spam":
-        narsiya.spam(message)
+    elif call.data == "spam":
+        narsiya.spam(call)
 
-    elif data == "zahvat":
-        narsiya.zahvat(message)
+    elif call.data == "zahvat":
+        narsiya.zahvat(call)
 
-    elif data == "othill":
-        narsiya.othill(message)
+    elif call.data == "othill":
+        narsiya.othill(call)
 
-    elif data == "pos":
-        narsiya.pos(message)
+    elif call.data == "pos":
+        narsiya.pos(call)
 
-    elif data == "deffence":
-        narsiya.deffence(message)
+    elif call.data == "deffence":
+        narsiya.deffence(call)
 
     # Смотрители
-    elif data == "svyatoy":
-        location.svyatoy(message)
+    elif call.data == "svyatoy":
+        location.svyatoy(call)
 
-    elif data == "prorok":
-        location.prorok(message)
+    elif call.data == "prorok":
+        location.prorok(call)
 
-    elif data == "poryadok":
-        location.poryadok(message)
+    elif call.data == "poryadok":
+        location.poryadok(call)
 
     # Подземелья
-    elif data == "razlom":
-        location.razlom(message)
+    elif call.data == "razlom":
+        location.razlom(call)
 
-    elif data == "more":
-        location.more(message)
+    elif call.data == "more":
+        location.more(call)
 
-    elif data == "kremen":
-        location.boss_kremen(message)
+    elif call.data == "kremen":
+        location.boss_kremen(call)
 
-    elif data == "parsival":
-        location.boss_persival(message)
+    elif call.data == "parsival":
+        location.boss_persival(call)
 
     # Таблицы
-    elif data == "adapt":
-        table.adapt(message)
+    elif call.data == "adapt":
+        table.adapt(call)
 
-    elif data == "dusha":
-        table.dusha(message)
+    elif call.data == "dusha":
+        table.dusha(call)
 
-    elif data == "suvenir":
-        table.suvenir(message)
+    elif call.data == "suvenir":
+        table.suvenir(call)
 
-    elif data == "relik":
-        table.relik(message)
+    elif call.data == "relik":
+        table.relik(call)
 
-    elif data == "accessory":
-        table.ecip(message)
+    elif call.data == "accessory":
+        table.ecip(call)
 
-    elif data == "titul":
-        table.titul(message)
+    elif call.data == "titul":
+        table.titul(call)
 
-    elif data == "sozv":
-        table.sozv(message)
+    elif call.data == "sozv":
+        table.sozv(call)
 
-    elif data == "dop":
-        table.dop(message)
+    elif call.data == "dop":
+        table.dop(call)
 
-    elif data == "proryv":
-        table.proryv(message)
+    elif call.data == "proryv":
+        table.proryv(call)
 
-    elif data == "pet":
-        table.pet(message)
+    elif call.data == "pet":
+        table.pet(call)
 
-    elif data == "setka":
-        table.setka(message)
+    elif call.data == "setka":
+        table.setka(call)
 
-    elif data == "abbreviation":
-        table.abbr(message)
+    elif call.data == "abbreviation":
+        table.abbr(call)
 
-    elif data == 'gaid_pvp':
-        table.gaid_pvp(message)
+    elif call.data == 'gaid_pvp':
+        table.gaid_pvp(call)

@@ -43,7 +43,7 @@ def get_text_messages(message):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
-    callback.callback_user(call.message.chat.id, call.data)
+    callback.callback_user(call)
 
 
 if __name__ == '__main__':
