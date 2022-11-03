@@ -92,7 +92,7 @@ def call_user(message):
         elif message.text.lower() == "справки":
             table.call_table(message)
 
-        elif message.text.lower() == "пвп":
+        elif message.text.lower() == "пвп" or message.text.lower() == "/pvp":
             build.call_pvp(message)
 
     else:
