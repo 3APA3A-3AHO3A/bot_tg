@@ -18,13 +18,13 @@ def call_user(message):
                                                     str(message.chat.id) + '</code> отправил: ' + message.text,
                               parse_mode='HTML')
 
-        if message.text == "/start":
+        if message.text == "/start" or message.text.lower() == "/start@knightofnarsia_bot":
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard.row('ПВП', 'БГ', 'Локации', 'Справки', 'Нарсия')
             bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name +
                              ", бот создан KnightsOfNarsia. \nСправка /help ", reply_markup=keyboard)
 
-        elif message.text == "/help":
+        elif message.text == "/help" or message.text.lower() == "/help@knightofnarsia_bot":
             keyboard = telebot.types.InlineKeyboardMarkup()
             keyboard.add(telebot.types.InlineKeyboardButton('Создатель бота', url='https://t.me/Vadik3AHO3A'))
             keyboard.add(telebot.types.InlineKeyboardButton('Бесплатные самоцветы',
@@ -42,10 +42,12 @@ def call_user(message):
                              '\nНаш канал по бесплатным самоцветам по ссылке ниже.' +
                              '\nЕсли остались вопросы или пожелания, напишите создателю бота.', reply_markup=keyboard)
 
-        elif message.text.lower() == "нарсия":
+        elif message.text.lower() == "нарсия" or message.text.lower() == "/narsiya"\
+                or message.text.lower() == "/narsiya@knightofnarsia_bot":
             narsiya.call_narsiya(message)
 
-        elif message.text.lower() == "бг":
+        elif message.text.lower() == "бг" or message.text.lower() == "/bg"\
+                or message.text.lower() == "/bg@knightofnarsia_bot":
             build.call_bg(message)
 
         elif message.text.lower() == "локации":
@@ -58,7 +60,8 @@ def call_user(message):
             keyboard1.row('ПВП', 'БГ', 'Локации', 'Справки', 'Нарсия')
             bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard1)
 
-        elif message.text.lower() == "смотрители":
+        elif message.text.lower() == "смотрители" or message.text.lower() == "/smotr"\
+                or message.text.lower() == "/smotr@knightofnarsia_bot":
             keyboard = telebot.types.InlineKeyboardMarkup()
             key_svyatoy = telebot.types.InlineKeyboardButton(text='Святой', callback_data='svyatoy')
             key_poryadok = telebot.types.InlineKeyboardButton(text='Порядок', callback_data='poryadok')
@@ -70,12 +73,14 @@ def call_user(message):
             )
             bot.send_message(message.from_user.id, text='Выбери интересующего смотрителя:', reply_markup=keyboard)
 
-        elif message.text.lower() == "подземелья":
+        elif message.text.lower() == "подземелья" or message.text.lower() == "/podzem" \
+                or message.text.lower() == "/podzem@knightofnarsia_bot":
             keyboard = keyboard_podzem()
             img = open('Database/bz.jpg', 'rb')
             bot.send_photo(message.chat.id, img, caption='Выбери интересующее подземелье.', reply_markup=keyboard)
 
-        elif message.text.lower() == "босс":
+        elif message.text.lower() == "босс" or message.text.lower() == "/boss"\
+                or message.text.lower() == "/boss@knightofnarsia_bot":
             keyboard = telebot.types.InlineKeyboardMarkup()
             key_kremen = telebot.types.InlineKeyboardButton(text='Кремень', callback_data='kremen')
             key_parsival = telebot.types.InlineKeyboardButton(text='Parsival`', callback_data='parsival')
@@ -86,13 +91,16 @@ def call_user(message):
             bot.send_message(message.from_user.id, text='Выбери одну из двух сборок от  @IKREMEN или @AleksandrHD:',
                              reply_markup=keyboard)
 
-        elif message.text.lower() == "факела":
+        elif message.text.lower() == "факела" or message.text.lower() == "/fakel"\
+                or message.text.lower() == "/fakel@knightofnarsia_bot":
             location.fakel(message.from_user.id)
 
-        elif message.text.lower() == "справки":
+        elif message.text.lower() == "справки" or message.text.lower() == "/table"\
+                or message.text.lower() == "/table@knightofnarsia_bot":
             table.call_table(message)
 
-        elif message.text.lower() == "пвп" or message.text.lower() == "/pvp":
+        elif message.text.lower() == "пвп" or message.text.lower() == "/pvp" \
+                or message.text.lower() == "/pvp@knightofnarsia_bot":
             build.call_pvp(message)
 
     else:

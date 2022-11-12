@@ -3,7 +3,6 @@ import openpyxl
 # BOT_TOKEN = '5687247228:AAFPTFmvJCtVU_weFVUnwCf0i7BPkMNAhiA'  # test_bot
 BOT_TOKEN = '5221109021:AAGl2b6Vs9Id1Yzss89l-34uwMkQcFNnETQ'
 BOT_TOKEN_logs = '5158112868:AAEKWw51sG5IT9Sxqbb4F1A6TTaaHOHyrQA'
-admin_id = 454589284
 
 excel_db = openpyxl.load_workbook('Database/database.xlsx')
 ex_user = excel_db.get_sheet_by_name("Пользователи")
@@ -11,6 +10,7 @@ ex_swats = excel_db.get_sheet_by_name("Спецназ")
 worksheet_build_pvp = excel_db.get_sheet_by_name("ПВП")
 worksheet_build_bg = excel_db.get_sheet_by_name("БГ")
 
+admin_id = [454589284, 1328571684, 1616544477]
 users = []
 swats = []
 pvp = []

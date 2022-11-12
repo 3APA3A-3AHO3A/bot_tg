@@ -7,19 +7,21 @@ bot = telebot.TeleBot(config.BOT_TOKEN)
 
 def fakel(chat_id):
     keyboard = telebot.types.InlineKeyboardMarkup()
-    keyboard.add(telebot.types.InlineKeyboardButton('Видео', url='https://youtu.be/G80d_E_vTB0'))
+    keyboard.add(telebot.types.InlineKeyboardButton('Прохождение', url='https://youtu.be/G80d_E_vTB0'))
+    keyboard.add(telebot.types.InlineKeyboardButton('Помощник', url='https://youtu.be/MIgKQscYJxo'))
     msg = "Создатель сборки на факела Сергей @IKREMEN" \
           "\nБард : реанимация, оживление, крылатое возрождение, священный суд" \
           "\nТреант: реанимация, железная воля, крылатое возрождение, священный суд" \
-          "\nДинамо: пыл битвы, лук порядка/проклятый доспех, крылатое возрождение, амбициозность" \
+          "\nДинамо: пыл битвы, проклятый доспех, крылатое возрождение, амбициозность" \
           "\nЧешуекрыл: чаша пожирателя, посох хаоса/проклятый доспех, крылатое возрождение, амбициозность" \
           "\nМечник: выживание, воодушевление, крылатое возрождение, священный суд" \
-          "\nОккультист: крепкая связь, выживание, крылатое возрождение, печать бездны"
-    img = open('Database/fakel/pack.png', 'rb')
-    bot.send_photo(chat_id, img)
-    bot.send_media_group(chat_id, [telebot.types.InputMediaPhoto(open('Database/fakel/bard.jpg', 'rb')),
+          "\nОккультист: крепкая связь, выживание, крылатое возрождение, печать бездны" \
+          "\nПо питомцам: обязательно два осьминога, морозный Дракоша, лодка, два луноволка" \
+          "\nПосмотрите видео, как добавить помощника по ссылке."
+    bot.send_media_group(chat_id, [telebot.types.InputMediaPhoto(open('Database/fakel/pack.png', 'rb')),
+                                   telebot.types.InputMediaPhoto(open('Database/fakel/bard.jpg', 'rb')),
                                    telebot.types.InputMediaPhoto(open('Database/fakel/treant.jpg', 'rb')),
-                                   telebot.types.InputMediaPhoto(open('Database/fakel/dino.jpg', 'rb')),
+                                   telebot.types.InputMediaPhoto(open('Database/fakel/dino.png', 'rb')),
                                    telebot.types.InputMediaPhoto(open('Database/fakel/chezh.jpg', 'rb')),
                                    telebot.types.InputMediaPhoto(open('Database/fakel/okkult.jpg', 'rb')),
                                    telebot.types.InputMediaPhoto(open('Database/fakel/mechnick.jpg', 'rb'))])
@@ -49,23 +51,20 @@ def poryadok(call):
 
 
 def prorok(call):
-    img = open('Database/smotr/prorok/pack.png', 'rb')
+    msg = "Пророк (сборка от Сергея @IKREMEN):\n" \
+          "При высадке важно учитывать, чтобы на первых двух выпущенных героях были питомцы Осьминоги." \
+          "\nСборка на всех героях одна: " \
+          "\nРаскол, Священный огонь, Зелье безумия, Пиромаг." \
+          "\n<i><b>На тыкву</b></i>: Раскол, Священный огонь, Кровавый барьер, Священный огонь."
     bot.send_media_group(call.message.chat.id,
-                         [telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok1.png', 'rb')),
+                         [telebot.types.InputMediaPhoto(open('Database/smotr/prorok/pack.png', 'rb')),
+                          telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok1.png', 'rb')),
                           telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok2.png', 'rb')),
                           telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok3.png', 'rb')),
                           telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok4.png', 'rb')),
                           telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok5.png', 'rb')),
                           telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok6.png', 'rb'))])
-    bot.send_photo(call.message.chat.id, img)
-    bot.send_message(call.message.chat.id,
-                     "Пророк (сборка от Сергея @IKREMEN):\n" +
-                     "При высадке важно учитывать, чтобы на первых двух выпущенных героях были питомцы Осьминоги."
-                     "\nСборка на всех героях одна: "
-                     "\nРаскол, Священный огонь, Зелье безумия, Пиромаг."
-                     "\n<i><b>На тыкву</b></i>: Раскол, Священный огонь, Кровавый барьер, Священный огонь.",
-                     parse_mode='HTML'
-                     )
+    bot.send_message(call.message.chat.id, msg, parse_mode='HTML')
 
 
 def svyatoy(call):
