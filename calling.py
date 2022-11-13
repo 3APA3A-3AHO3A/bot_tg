@@ -106,6 +106,9 @@ def call_user(message):
                 or message.text.lower() == "/pvp@knightofnarsia_bot":
             build.call_pvp(message)
 
+    elif message.chat.id == -1001180042310:
+        pass
+
     else:
         keyboard = telebot.types.InlineKeyboardMarkup()
         keyboard.add(telebot.types.InlineKeyboardButton('Создатель бота', url='https://t.me/Vadik3AHO3A'))
@@ -116,6 +119,15 @@ def call_user(message):
                                                     ' ID: <code>'.format(user_name, first_name) +
                                                     str(message.chat.id) + "</code> отправил: " + message.text,
                               parse_mode='HTML')
+
+    if "где скюль" in message.text.lower():
+        bot.reply_to(message, 'Потеряли пацана')
+
+    elif "скюль бот" in message.text.lower():
+        bot.reply_to(message, 'Согласен, мой малой')
+
+    elif "скюль ты" in message.text.lower() or "скюль, ты" in message.text.lower():
+        bot.reply_to(message, 'По имени и отчеству, пожалуйста')
 
 
 def keyboard_podzem():
