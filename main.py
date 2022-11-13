@@ -36,10 +36,19 @@ def message_mailing(message):
         bot.send_message(message.chat.id, text=' Рассылка завершена!')
 
 
+@bot.message_handler(content_types=["left_chat_member"])
+def handler_left_member(message):
+    if message.chat.id == -1001410785964:
+        msg = "Боец сдулся. Добро пожаловать в рядовые."
+        bot.send_message(message.chat.id, msg, parse_mode='HTML')
+    elif message.chat.id == -1001467336173:
+        msg = "Всего хорошего, туалетный воин."
+        bot.send_message(message.chat.id, msg, parse_mode='HTML')
+
 @bot.message_handler(content_types=["new_chat_members"])
 def handler_new_member(message):
     # Общалка
-    if message.chat.id == -1001467336173 or message.chat.id == -813998231:
+    if message.chat.id == -1001467336173:
         first_name = message.new_chat_members[0].first_name
         user_name = message.new_chat_members[0].username
         msg = f"Добро пожаловать в семейство Гильдий <b>KnightsOfNarsia и NewEra</b>, {first_name} @{user_name} 🤝" \

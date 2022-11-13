@@ -13,7 +13,10 @@ def call_user(message):
     user_name = message.from_user.username
     first_name = message.from_user.first_name
     if config.author(message.chat.id, config.users):
-        bot_logs.send_message(config.admin_id[0], text='Пользователь {1} @{0}'
+        if message.chat.id == -1001410785964 or message.chat.id == -1001467336173 or message.chat.id == -1001100054328:
+            pass
+        else:
+            bot_logs.send_message(config.admin_id[0], text='Пользователь {1} @{0}'
                                                     ' ID: <code>'.format(user_name, first_name) +
                                                     str(message.chat.id) + '</code> отправил: ' + message.text,
                               parse_mode='HTML')
