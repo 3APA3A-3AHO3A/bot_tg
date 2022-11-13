@@ -12,6 +12,22 @@ import calling
 bot = telebot.TeleBot(config.BOT_TOKEN)
 
 
+@bot.message_handler(commands=['donate'])
+def donate(message):
+    keyboard = telebot.types.InlineKeyboardMarkup()
+    keyboard.add(telebot.types.InlineKeyboardButton('donate', url='https://yoomoney.ru/to/410012184021666/0'))
+    img = open('Database/donate.jpg', 'rb')
+    msg = 'Если Вы хотите поддержать разработчика бота, то можете отправить средства на:' \
+          '\n\n<b>Тинькофф</b>:' \
+          '\nНомер телефона: <code>+79087057188</code>' \
+          '\nНомер карты: <code>2200700464227569</code>' \
+          '\n\n<b>Сбербанк</b>:' \
+          '\nНомер телефона: <code>+79823214514</code>' \
+          '\nНомер карты: <code>5469720013411935</code>' \
+          '\n\nОтсканируйте QR-code камерой телефона или перейдите по ссылке.'
+    bot.send_photo(message.chat.id, img, caption=msg, reply_markup=keyboard, parse_mode='HTML')
+
+
 @bot.message_handler(commands=['send'])
 def send_mail(message):
     if config.author(message.chat.id, config.admin_id):
