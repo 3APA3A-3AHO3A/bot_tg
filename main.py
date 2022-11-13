@@ -33,6 +33,7 @@ def message_mailing(message):
                 bot.send_message(i, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
             except:
                 pass
+        bot.send_message(-1001180042310, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
         bot.send_message(message.chat.id, text=' Рассылка завершена!')
 
 
