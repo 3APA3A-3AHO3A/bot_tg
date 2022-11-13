@@ -10,10 +10,13 @@ import callback
 import calling
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
+bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 
 
 @bot.message_handler(commands=['donate'])
 def donate(message):
+    user_name = message.from_user.username
+    first_name = message.from_user.first_name
     keyboard = telebot.types.InlineKeyboardMarkup()
     keyboard.add(telebot.types.InlineKeyboardButton('donate', url='https://yoomoney.ru/to/410012184021666/0'))
     img = open('Database/donate.jpg', 'rb')
@@ -26,6 +29,7 @@ def donate(message):
           '\nНомер карты: <code>5469720013411935</code>' \
           '\n\nОтсканируйте QR-code камерой телефона или перейдите по ссылке.'
     bot.send_photo(message.chat.id, img, caption=msg, reply_markup=keyboard, parse_mode='HTML')
+    bot_logs.send_message(config.admin_id[0], text=f'Пользователь {first_name} @{user_name} открыл пожертвование.')
 
 
 @bot.message_handler(commands=['send'])
