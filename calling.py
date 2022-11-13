@@ -123,7 +123,7 @@ def call_user(message):
     if "где скюль" in message.text.lower():
         bot.reply_to(message, 'Потеряли пацана')
 
-    elif "скюль бот" in message.text.lower():
+    elif "скюль" in message.text.lower() and "бот" in message.text.lower():
         bot.reply_to(message, 'Согласен, мой малой')
 
     elif "скюль ты" in message.text.lower() or "скюль, ты" in message.text.lower():

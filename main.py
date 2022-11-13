@@ -15,7 +15,7 @@ bot = telebot.TeleBot(config.BOT_TOKEN)
 @bot.message_handler(commands=['send'])
 def send_mail(message):
     if config.author(message.chat.id, config.admin_id):
-        msg = bot.send_message(message.chat.id, 'Введите текст для рассылки\nДля отмены напишите "-" без кавычек')
+        msg = bot.send_message(message.chat.id, 'Введите сообщение для рассылки\nДля отмены напишите "-" без кавычек')
         bot.register_next_step_handler(msg, message_mailing)
     else:
         bot.send_message(message.chat.id, 'Нет прав на использование данной команды.')
