@@ -1,6 +1,7 @@
 import telebot
 import build
 import config
+import creative
 import location
 import narsiya
 import table
@@ -128,3 +129,6 @@ def callback_user(call):
 
     elif call.data == 'gaid_pvp':
         table.gaid_pvp(call)
+
+    elif call.data == "creative_guide":
+        creative.creative_guide(call)

@@ -1,5 +1,6 @@
 import telebot
 import config
+import creative
 import location
 import narsiya
 import table
@@ -12,18 +13,20 @@ bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 def call_user(message):
     user_name = message.from_user.username
     first_name = message.from_user.first_name
-    if config.author(message.chat.id, config.users):
+    if config.author(message.chat.id, config.users) or message.chat.id == -1001100054328\
+            or message.chat.id == -1001410785964 or message.chat.id == -1001467336173:
         if message.chat.id == -1001410785964 or message.chat.id == -1001467336173 or message.chat.id == -1001100054328:
             pass
         else:
-            bot_logs.send_message(config.admin_id[0], text='Пользователь {1} @{0}'
-                                                    ' ID: <code>'.format(user_name, first_name) +
-                                                    str(message.chat.id) + '</code> отправил: ' + message.text,
-                              parse_mode='HTML')
+            bot_logs.send_message(config.admin_id[0], text=f'Пользователь {first_name} @{user_name}'
+                                                           '\nID: <code>' + str(message.chat.id) +
+                                                           '</code> отправил: ' + message.text,
+                                  parse_mode='HTML')
 
         if message.text == "/start" or message.text.lower() == "/start@knightofnarsia_bot":
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-            keyboard.row('ПВП', 'БГ', 'Локации', 'Справки', 'Нарсия')
+            keyboard.row('ПВП', 'БГ', 'Локации')
+            keyboard.row('Справки', 'Нарсия', 'Креативщик')
             bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name +
                              ", бот создан KnightsOfNarsia. \nСправка /help ", reply_markup=keyboard)
 
@@ -45,25 +48,31 @@ def call_user(message):
                              '\nНаш канал по бесплатным самоцветам по ссылке ниже.' +
                              '\nЕсли остались вопросы или пожелания, напишите создателю бота.', reply_markup=keyboard)
 
-        elif message.text.lower() == "нарсия" or message.text.lower() == "/narsiya"\
+        elif message.text.lower() == "нарсия" or message.text.lower() == "/narsiya" \
                 or message.text.lower() == "/narsiya@knightofnarsia_bot":
             narsiya.call_narsiya(message)
 
-        elif message.text.lower() == "бг" or message.text.lower() == "/bg"\
+        elif message.text.lower() == "креативщик" or message.text.lower() == "/creative" \
+                or message.text.lower() == "/creative@knightofnarsia_bot":
+            creative.creative(message)
+
+        elif message.text.lower() == "бг" or message.text.lower() == "/bg" \
                 or message.text.lower() == "/bg@knightofnarsia_bot":
             build.call_bg(message)
 
         elif message.text.lower() == "локации":
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-            keyboard.row('Смотрители', 'Босс', 'Факела', 'Подземелья', 'Назад')
+            keyboard.row('Смотрители', 'Босс')
+            keyboard.row('Факела', 'Подземелья', 'Назад')
             bot.send_message(message.chat.id, "Выбери интересующую локацию.", reply_markup=keyboard)
 
         elif message.text.lower() == "назад":
-            keyboard1 = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-            keyboard1.row('ПВП', 'БГ', 'Локации', 'Справки', 'Нарсия')
-            bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard1)
+            keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
+            keyboard.row('ПВП', 'БГ', 'Локации')
+            keyboard.row('Справки', 'Нарсия', 'Креативщик')
+            bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard)
 
-        elif message.text.lower() == "смотрители" or message.text.lower() == "/smotr"\
+        elif message.text.lower() == "смотрители" or message.text.lower() == "/smotr" \
                 or message.text.lower() == "/smotr@knightofnarsia_bot":
             keyboard = telebot.types.InlineKeyboardMarkup()
             key_svyatoy = telebot.types.InlineKeyboardButton(text='Святой', callback_data='svyatoy')
@@ -82,7 +91,7 @@ def call_user(message):
             img = open('Database/bz.jpg', 'rb')
             bot.send_photo(message.chat.id, img, caption='Выбери интересующее подземелье.', reply_markup=keyboard)
 
-        elif message.text.lower() == "босс" or message.text.lower() == "/boss"\
+        elif message.text.lower() == "босс" or message.text.lower() == "/boss" \
                 or message.text.lower() == "/boss@knightofnarsia_bot":
             keyboard = telebot.types.InlineKeyboardMarkup()
             key_kremen = telebot.types.InlineKeyboardButton(text='Кремень', callback_data='kremen')
@@ -94,11 +103,11 @@ def call_user(message):
             bot.send_message(message.from_user.id, text='Выбери одну из двух сборок от  @IKREMEN или @AleksandrHD:',
                              reply_markup=keyboard)
 
-        elif message.text.lower() == "факела" or message.text.lower() == "/fakel"\
+        elif message.text.lower() == "факела" or message.text.lower() == "/fakel" \
                 or message.text.lower() == "/fakel@knightofnarsia_bot":
             location.fakel(message.from_user.id)
 
-        elif message.text.lower() == "справки" or message.text.lower() == "/table"\
+        elif message.text.lower() == "справки" or message.text.lower() == "/table" \
                 or message.text.lower() == "/table@knightofnarsia_bot":
             table.call_table(message)
 
@@ -116,8 +125,8 @@ def call_user(message):
                          '</code>\nОтправьте ID, представленный выше, и игровой Никнейм создателю бота.',
                          parse_mode='HTML', reply_markup=keyboard)
         bot_logs.send_message(config.admin_id[0], text='Пользователь, у которого нет доступа, {1} @{0}'
-                                                    ' ID: <code>'.format(user_name, first_name) +
-                                                    str(message.chat.id) + "</code> отправил: " + message.text,
+                                                       ' ID: <code>'.format(user_name, first_name) +
+                                                       str(message.chat.id) + "</code> отправил: " + message.text,
                               parse_mode='HTML')
 
     if "где скюль" in message.text.lower():

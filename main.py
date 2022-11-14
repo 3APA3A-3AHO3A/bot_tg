@@ -8,9 +8,8 @@ import telebot
 import config
 import callback
 import calling
-# import urllib.request
-from PIL import Image
-
+import creative
+import send
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
 bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
@@ -20,32 +19,8 @@ bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 def send_mail(message):
     msg = bot.send_message(message.chat.id,
                            'Отправьте изображение боту, на которое нужно наложить логотип')
-    bot.register_next_step_handler(msg, logo_mailing)
+    bot.register_next_step_handler(msg, creative.logo_mailing)
 
-
-def logo_mailing(message):
-    if message.content_type == "photo":
-        bot.send_message(message.chat.id, text='Началась обработка фото!')
-        fileid = message.photo[-1].file_id
-        file_info = bot.get_file(fileid)
-        downloaded_file = bot.download_file(file_info.file_path)
-        with open("image.jpg", 'wb') as new_file:
-            new_file.write(downloaded_file)
-        img = open('image.jpg', 'rb')
-        logo = open('Database/logo.png', 'rb')
-        background = Image.open(img)
-        foreground = Image.open(logo)
-        background.paste(foreground, (0, 0), foreground)
-        background.save('image.jpg')
-        img_logo = open('image.jpg', 'rb')
-        msg = "#castleclash\n" \
-              "#cbcevent https://discord.gg/castleclash"
-        keyboard = telebot.types.InlineKeyboardMarkup()
-        keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки видео', url='https://g.igg.com/EtngH2'))
-        keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки фото', url='https://g.igg.com/oXK3JZ'))
-        bot.send_photo(message.chat.id, img_logo, caption=msg, reply_markup=keyboard, parse_mode='HTML')
-    else:
-        bot.send_message(message.chat.id, 'Вызовите заново команду /logo и отправьте фото!')
 
 @bot.message_handler(commands=['donate'])
 def donate(message):
@@ -70,7 +45,16 @@ def donate(message):
 def send_mail(message):
     if config.author(message.chat.id, config.admin_id):
         msg = bot.send_message(message.chat.id, 'Введите сообщение для рассылки\nДля отмены напишите "-" без кавычек')
-        bot.register_next_step_handler(msg, message_mailing)
+        bot.register_next_step_handler(msg, send.message_mailing)
+    else:
+        bot.send_message(message.chat.id, 'Нет прав на использование данной команды.')
+
+
+@bot.message_handler(commands=['send_bot'])
+def send_mail(message):
+    if config.author(message.chat.id, config.admin_id):
+        msg = bot.send_message(message.chat.id, 'Введите сообщение для рассылки\nДля отмены напишите "-" без кавычек')
+        bot.register_next_step_handler(msg, send.message_mailing_bot)
     else:
         bot.send_message(message.chat.id, 'Нет прав на использование данной команды.')
 
@@ -90,6 +74,9 @@ def message_mailing(message):
                     pass
             try:
                 bot.send_message(-1001180042310, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
+                bot.send_message(-1001100054328, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
+                bot.send_message(-1001410785964, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
+                bot.send_message(-1001467336173, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
             except:
                 pass
             bot.send_message(message.chat.id, text=' Рассылка завершена!')
@@ -102,6 +89,9 @@ def message_mailing(message):
                 pass
         try:
             bot.copy_message(chat_id=-1001180042310, from_chat_id=message.chat.id, message_id=message.id)
+            bot.copy_message(chat_id=-1001100054328, from_chat_id=message.chat.id, message_id=message.id)
+            bot.copy_message(chat_id=-1001410785964, from_chat_id=message.chat.id, message_id=message.id)
+            bot.copy_message(chat_id=-1001467336173, from_chat_id=message.chat.id, message_id=message.id)
         except:
             pass
         bot.send_message(message.chat.id, text=' Рассылка завершена!')
@@ -115,6 +105,7 @@ def handler_left_member(message):
     elif message.chat.id == -1001467336173:
         msg = "Всего хорошего, туалетный воин."
         bot.send_message(message.chat.id, msg, parse_mode='HTML')
+
 
 @bot.message_handler(content_types=["new_chat_members"])
 def handler_new_member(message):
