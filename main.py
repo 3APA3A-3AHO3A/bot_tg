@@ -8,10 +8,44 @@ import telebot
 import config
 import callback
 import calling
+# import urllib.request
+from PIL import Image
+
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
 bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 
+
+@bot.message_handler(commands=['logo'])
+def send_mail(message):
+    msg = bot.send_message(message.chat.id,
+                           'Отправьте изображение боту, на которое нужно наложить логотип')
+    bot.register_next_step_handler(msg, logo_mailing)
+
+
+def logo_mailing(message):
+    if message.content_type == "photo":
+        bot.send_message(message.chat.id, text='Началась обработка фото!')
+        fileid = message.photo[-1].file_id
+        file_info = bot.get_file(fileid)
+        downloaded_file = bot.download_file(file_info.file_path)
+        with open("image.jpg", 'wb') as new_file:
+            new_file.write(downloaded_file)
+        img = open('image.jpg', 'rb')
+        logo = open('Database/logo.png', 'rb')
+        background = Image.open(img)
+        foreground = Image.open(logo)
+        background.paste(foreground, (0, 0), foreground)
+        background.save('image.jpg')
+        img_logo = open('image.jpg', 'rb')
+        msg = "#castleclash\n" \
+              "#cbcevent https://discord.gg/castleclash"
+        keyboard = telebot.types.InlineKeyboardMarkup()
+        keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки видео', url='https://g.igg.com/EtngH2'))
+        keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки фото', url='https://g.igg.com/oXK3JZ'))
+        bot.send_photo(message.chat.id, img_logo, caption=msg, reply_markup=keyboard, parse_mode='HTML')
+    else:
+        bot.send_message(message.chat.id, 'Вызовите заново команду /logo и отправьте фото!')
 
 @bot.message_handler(commands=['donate'])
 def donate(message):
