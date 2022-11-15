@@ -97,15 +97,7 @@ def call_user(message):
 
         elif message.text.lower() == "босс" or message.text.lower() == "/boss" \
                 or message.text.lower() == "/boss@knightofnarsia_bot":
-            keyboard = telebot.types.InlineKeyboardMarkup()
-            key_kremen = telebot.types.InlineKeyboardButton(text='Кремень', callback_data='kremen')
-            key_parsival = telebot.types.InlineKeyboardButton(text='Parsival`', callback_data='parsival')
-            keyboard.add(
-                key_kremen,
-                key_parsival
-            )
-            bot.send_message(message.chat.id, text='Выбери одну из двух сборок от  @IKREMEN или @AleksandrHD:',
-                             reply_markup=keyboard)
+            location.boss(message)
 
         elif message.text.lower() == "факела" or message.text.lower() == "/fakel" \
                 or message.text.lower() == "/fakel@knightofnarsia_bot":

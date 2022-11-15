@@ -84,12 +84,6 @@ def callback_user(call):
     elif call.data == "more":
         location.more(call)
 
-    elif call.data == "kremen":
-        location.boss_kremen(call)
-
-    elif call.data == "parsival":
-        location.boss_persival(call)
-
     # Таблицы
     elif call.data == "adapt":
         table.adapt(call)

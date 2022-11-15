@@ -92,34 +92,20 @@ def svyatoy(call):
                      reply_markup=keyboard)
 
 
-def boss_kremen(call):
+def boss(message):
     keyboard = telebot.types.InlineKeyboardMarkup()
-    keyboard.add(telebot.types.InlineKeyboardButton('Видео-прохождение', url='https://youtu.be/-Hrkj-SAdfk'))
-    bot.send_media_group(call.message.chat.id,
-                         [telebot.types.InputMediaPhoto(open('Database/boss/kremen/1.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/kremen/2.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/kremen/3.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/kremen/4.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/kremen/5.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/kremen/6.jpg', 'rb'))])
-    bot.send_message(call.message.chat.id, "Важно! Никаких пиромагов, тамплиеров, мастеров клинка чарами"
-                                           "\nПитомцев на героях ставить так, чтоб на героях точность была около 20к",
-                     reply_markup=keyboard)
-
-
-def boss_persival(call):
-    keyboard = telebot.types.InlineKeyboardMarkup()
-    keyboard.add(telebot.types.InlineKeyboardButton('Видео-прохождение', url='https://youtu.be/BZLsehTBKlU'))
-    bot.send_media_group(call.message.chat.id,
-                         [telebot.types.InputMediaPhoto(open('Database/boss/parsival/1.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/parsival/2.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/parsival/3.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/parsival/4.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/parsival/5.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/parsival/6.jpg', 'rb'))])
-    bot.send_message(call.message.chat.id, "Важно! Никаких пиромагов, тамплиеров, мастеров клинка чарами"
-                                           "\nПитомцев на героях ставить так, чтоб на героях точность была около 20к"
-                                           "\nДинамо без Пета ставится перед боссом, остальные герои позади босса.",
+    keyboard.add(telebot.types.InlineKeyboardButton('Видео-прохождение', url='https://youtu.be/wJnQrLUcUZ8'))
+    bot.send_media_group(message.chat.id,
+                         [telebot.types.InputMediaPhoto(open('Database/boss/pack.png', 'rb')),
+                          telebot.types.InputMediaPhoto(open('Database/boss/dino.png', 'rb')),
+                          telebot.types.InputMediaPhoto(open('Database/boss/sparki.png', 'rb')),
+                          telebot.types.InputMediaPhoto(open('Database/boss/sudya.png', 'rb')),
+                          telebot.types.InputMediaPhoto(open('Database/boss/vor.png', 'rb')),
+                          telebot.types.InputMediaPhoto(open('Database/boss/tycva.png', 'rb')),
+                          telebot.types.InputMediaPhoto(open('Database/boss/burekril.png', 'rb'))])
+    bot.send_message(message.chat.id, "Важно!\n❗Не ставить чарой: пиромагов, тамплиеров, мастеров клинка."
+                                      "\n❗Ставить на героев питомцев, которые не атакуют и дают точность около 20к."
+                                      "\n❗Динамо без Пета ставится перед боссом, остальные герои позади него.",
                      reply_markup=keyboard)
 
 
