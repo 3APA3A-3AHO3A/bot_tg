@@ -23,7 +23,8 @@ def call_user(message):
                                                            '</code> отправил: ' + message.text,
                                   parse_mode='HTML')
 
-        if message.text == "/start" or message.text.lower() == "старт":
+        if message.text == "/start" or message.text.lower() == "старт" \
+                or message.text.lower() == "/start@knightofnarsia_bot":
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard.row('ПВП', 'БГ', 'Локации')
             keyboard.row('Справки', 'Нарсия', 'Креативщик')
