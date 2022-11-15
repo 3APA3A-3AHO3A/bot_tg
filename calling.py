@@ -124,9 +124,9 @@ def call_user(message):
         bot.send_message(message.chat.id, 'Тебе сюда нельзя. Твой ID: <code>' + str(message.chat.id) +
                          '</code>\nОтправьте ID, представленный выше, и игровой Никнейм создателю бота.',
                          parse_mode='HTML', reply_markup=keyboard)
-        bot_logs.send_message(config.admin_id[0], text='Пользователь, у которого нет доступа, {1} @{0}'
-                                                       ' ID: <code>'.format(user_name, first_name) +
-                                                       str(message.chat.id) + "</code> отправил: " + message.text,
+        bot_logs.send_message(config.admin_id[0],
+                              text=f'Пользователь, у которого нет доступа, {first_name} @{user_name}'
+                                   '\nID: <code>' + str(message.chat.id) + "</code> отправил: " + message.text,
                               parse_mode='HTML')
 
     if "где скюль" in message.text.lower():

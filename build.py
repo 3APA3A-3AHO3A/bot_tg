@@ -8,26 +8,20 @@ bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 def keyboard_pvp():
     keyboard = telebot.types.InlineKeyboardMarkup()
     key_dinamo = telebot.types.InlineKeyboardButton(text='Динамо', callback_data='dinamo')
-    key_chezh_poryadok = telebot.types.InlineKeyboardButton(text='Чех(Порядок)',
+    key_chezh_poryadok = telebot.types.InlineKeyboardButton(text='Чех (Порядок)',
                                                             callback_data='chezh_poryadok')
-    key_chezh_chaos = telebot.types.InlineKeyboardButton(text='Чех(Хаос)', callback_data='chezh_chaos')
+    key_chezh_chaos = telebot.types.InlineKeyboardButton(text='Чех (Хаос)', callback_data='chezh_chaos')
     key_zmeya = telebot.types.InlineKeyboardButton(text='Змей', callback_data='zmeya')
     key_baron = telebot.types.InlineKeyboardButton(text='Барон', callback_data='baron')
     key_povelitel = telebot.types.InlineKeyboardButton(text='Повелитель', callback_data='povelitel')
     key_mechnic = telebot.types.InlineKeyboardButton(text='Мечник', callback_data='mechnic')
-    key_demon = telebot.types.InlineKeyboardButton(text='Демон-охотник', callback_data='demon')
     key_bard = telebot.types.InlineKeyboardButton(text='Бард', callback_data='bard')
     key_hudozhka = telebot.types.InlineKeyboardButton(text='Художница', callback_data='hudozhka')
-    key_mumiya = telebot.types.InlineKeyboardButton(text='Мумия', callback_data='mumiya')
     key_mari = telebot.types.InlineKeyboardButton(text='Мэри', callback_data='mari')
     key_fox = telebot.types.InlineKeyboardButton(text='Лис', callback_data='fox')
-    key_tycva = telebot.types.InlineKeyboardButton(text='Тыква', callback_data='tycva')
     key_frostee = telebot.types.InlineKeyboardButton(text='Фрости', callback_data='frostee')
-    key_maestro = telebot.types.InlineKeyboardButton(text='Маэстро', callback_data='maestro')
-    key_krist = telebot.types.InlineKeyboardButton(text='Кристелла', callback_data='krist')
     key_fairy = telebot.types.InlineKeyboardButton(text='Фейри', callback_data='fairy')
     key_okkult = telebot.types.InlineKeyboardButton(text='Оккультист', callback_data='okkult')
-    key_koloss = telebot.types.InlineKeyboardButton(text='Колосс', callback_data='koloss')
     key_ronin = telebot.types.InlineKeyboardButton(text='Ронин', callback_data='ronin')
     keyboard.add(
         key_zmeya,
@@ -45,13 +39,7 @@ def keyboard_pvp():
         key_mari,
         key_ronin,
         key_fox,
-        key_maestro,
-        key_krist,
-        key_demon,
-        key_mumiya,
-        key_tycva,
-        key_koloss,
-        row_width=4
+        row_width=3
     )
     return keyboard
 
@@ -68,7 +56,6 @@ def keyboard_bg():
     key_fen = telebot.types.InlineKeyboardButton(text='Феникс', callback_data='fen')
     key_major = telebot.types.InlineKeyboardButton(text='Мажор-сборка', callback_data='major')
     keyboard.add(
-        key_major,
         key_sekach,
         key_anub,
         key_bard_bg,
@@ -77,8 +64,9 @@ def keyboard_bg():
         key_minos,
         key_treant,
         key_fen,
-        row_width=4
+        row_width=3
     )
+    keyboard.add(key_major)
     return keyboard
 
 
@@ -91,7 +79,7 @@ def call_pvp(message):
         bot.send_photo(message.chat.id, img, caption='Выбери интересующую сборку героя:', reply_markup=keyboard)
     else:
         bot_logs.send_message(config.admin_id[0], text='Пользователь {1} @{0} '
-                                                    'ID: <code>'.format(user_name, first_name) +
+                                                    '\nID: <code>'.format(user_name, first_name) +
                                                     str(message.chat.id) + "</code> без доступа к ПВП",
                               parse_mode='HTML')
         bot.send_message(message.from_user.id, text='Для доступа к ПВП пользователь должен находиться '

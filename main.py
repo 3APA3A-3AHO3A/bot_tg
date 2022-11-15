@@ -16,8 +16,7 @@ bot = telebot.TeleBot(config.BOT_TOKEN)
 
 @bot.message_handler(commands=['logo'])
 def send_mail(message):
-    msg = bot.send_message(message.chat.id,
-                           'Отправьте изображение боту, на которое нужно наложить логотип')
+    msg = bot.send_message(message.chat.id, 'Отправьте изображение боту, на которое нужно наложить логотип')
     bot.register_next_step_handler(msg, creative.logo_mailing)
 
 
