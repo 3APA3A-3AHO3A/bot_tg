@@ -87,7 +87,7 @@ def call_user(message):
                 key_poryadok,
                 key_prorok,
             )
-            bot.send_message(message.from_user.id, text='Выбери интересующего смотрителя:', reply_markup=keyboard)
+            bot.send_message(message.chat.id, text='Выбери интересующего смотрителя:', reply_markup=keyboard)
 
         elif message.text.lower() == "подземелья" or message.text.lower() == "/podzem" \
                 or message.text.lower() == "/podzem@knightofnarsia_bot":
@@ -104,12 +104,12 @@ def call_user(message):
                 key_kremen,
                 key_parsival
             )
-            bot.send_message(message.from_user.id, text='Выбери одну из двух сборок от  @IKREMEN или @AleksandrHD:',
+            bot.send_message(message.chat.id, text='Выбери одну из двух сборок от  @IKREMEN или @AleksandrHD:',
                              reply_markup=keyboard)
 
         elif message.text.lower() == "факела" or message.text.lower() == "/fakel" \
                 or message.text.lower() == "/fakel@knightofnarsia_bot":
-            location.fakel(message.from_user.id)
+            location.fakel(message.chat.id)
 
         elif message.text.lower() == "справки" or message.text.lower() == "/table" \
                 or message.text.lower() == "/table@knightofnarsia_bot":

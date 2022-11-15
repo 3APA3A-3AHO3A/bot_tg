@@ -82,7 +82,7 @@ def call_pvp(message):
                                                     '\nID: <code>'.format(user_name, first_name) +
                                                     str(message.chat.id) + "</code> без доступа к ПВП",
                               parse_mode='HTML')
-        bot.send_message(message.from_user.id, text='Для доступа к ПВП пользователь должен находиться '
+        bot.send_message(message.chat.id, text='Для доступа к ПВП пользователь должен находиться '
                                                     'в группах Спецназ или Штурмовики.')
 
 
