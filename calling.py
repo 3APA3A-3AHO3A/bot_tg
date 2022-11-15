@@ -13,7 +13,7 @@ bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 def call_user(message):
     user_name = message.from_user.username
     first_name = message.from_user.first_name
-    if config.author(message.chat.id, config.users) or message.chat.id == -1001100054328\
+    if config.author(message.chat.id, config.users) or message.chat.id == -1001100054328 \
             or message.chat.id == -1001410785964 or message.chat.id == -1001467336173:
         if message.chat.id == -1001410785964 or message.chat.id == -1001467336173 or message.chat.id == -1001100054328:
             pass
@@ -23,19 +23,23 @@ def call_user(message):
                                                            '</code> отправил: ' + message.text,
                                   parse_mode='HTML')
 
-        if message.text == "/start" or message.text.lower() == "/start@knightofnarsia_bot":
+        if message.text == "/start" or message.text.lower() == "старт":
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard.row('ПВП', 'БГ', 'Локации')
             keyboard.row('Справки', 'Нарсия', 'Креативщик')
-            bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name +
+            bot.send_message(message.from_user.id, "Привет, " + message.from_user.first_name +
                              ", бот создан KnightsOfNarsia. \nСправка /help ", reply_markup=keyboard)
+
+        elif message.text == "/delete" or message.text.lower() == "/delete@knightofnarsia_bot":
+            keyboard = telebot.types.ReplyKeyboardRemove()
+            bot.send_message(message.chat.id, "Удаляю клавиатуру", reply_markup=keyboard)
 
         elif message.text == "/help" or message.text.lower() == "/help@knightofnarsia_bot":
             keyboard = telebot.types.InlineKeyboardMarkup()
             keyboard.add(telebot.types.InlineKeyboardButton('Создатель бота', url='https://t.me/Vadik3AHO3A'))
             keyboard.add(telebot.types.InlineKeyboardButton('Бесплатные самоцветы',
                                                             url='https://t.me/joinchat/J8dMLy4wRy4yNWIy'))
-            bot.send_message(message.from_user.id, 'Бот создан для облегчения игрового процесса "Битвы Замков".' +
+            bot.send_message(message.chat.id, 'Бот создан для облегчения игрового процесса "Битвы Замков".' +
                              '\nКоманды выведены кнопками на панели.' +
                              '\nСписок команд:' +
                              '\n/start - запуск бота.' +
@@ -64,13 +68,13 @@ def call_user(message):
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard.row('Смотрители', 'Босс')
             keyboard.row('Факела', 'Подземелья', 'Назад')
-            bot.send_message(message.chat.id, "Выбери интересующую локацию.", reply_markup=keyboard)
+            bot.send_message(message.from_user.id, "Выбери интересующую локацию.", reply_markup=keyboard)
 
         elif message.text.lower() == "назад":
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard.row('ПВП', 'БГ', 'Локации')
             keyboard.row('Справки', 'Нарсия', 'Креативщик')
-            bot.send_message(message.chat.id, "Выбери интересующую команду.", reply_markup=keyboard)
+            bot.send_message(message.from_user.id, "Выбери интересующую команду.", reply_markup=keyboard)
 
         elif message.text.lower() == "смотрители" or message.text.lower() == "/smotr" \
                 or message.text.lower() == "/smotr@knightofnarsia_bot":

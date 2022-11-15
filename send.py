@@ -34,9 +34,13 @@ def message_mailing(message):
             except:
                 pass
         try:
+            # Важное
             bot.copy_message(chat_id=-1001180042310, from_chat_id=message.chat.id, message_id=message.id)
+            # Спецназ
             bot.copy_message(chat_id=-1001100054328, from_chat_id=message.chat.id, message_id=message.id)
+            # Штурмовики
             bot.copy_message(chat_id=-1001410785964, from_chat_id=message.chat.id, message_id=message.id)
+            # Общалка
             bot.copy_message(chat_id=-1001467336173, from_chat_id=message.chat.id, message_id=message.id)
         except:
             pass
