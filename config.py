@@ -20,7 +20,8 @@ bg = []
 for i in range(ex_user.max_row - 1):
     id_users = ex_user.cell(row=(i + 2), column=1).value
     users.append(id_users)
-
+# Test-chat
+users.append(-1001700330817)
 for i in range(ex_swats.max_row - 1):
     id_swats = ex_swats.cell(row=(i + 2), column=1).value
     swats.append(id_swats)
