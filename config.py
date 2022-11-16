@@ -1,7 +1,7 @@
 import openpyxl
 
-BOT_TOKEN = '5687247228:AAFPTFmvJCtVU_weFVUnwCf0i7BPkMNAhiA'  # test_bot
-# BOT_TOKEN = '5221109021:AAGl2b6Vs9Id1Yzss89l-34uwMkQcFNnETQ'
+# BOT_TOKEN = '5687247228:AAFPTFmvJCtVU_weFVUnwCf0i7BPkMNAhiA'  # test_bot
+BOT_TOKEN = '5221109021:AAGl2b6Vs9Id1Yzss89l-34uwMkQcFNnETQ'
 BOT_TOKEN_logs = '5158112868:AAEKWw51sG5IT9Sxqbb4F1A6TTaaHOHyrQA'
 
 excel_db = openpyxl.load_workbook('Database/database.xlsx')
