@@ -20,7 +20,7 @@ def callback_user(call):
                   "\nКвадрат: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=5).value) + \
                   "\nЧара: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=6).value) + \
                   "\nСозвездия: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=7).value)
-            img = open('Database/sborki/' + str(item) + '.jpg', 'rb')
+            img = str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=8).value)
             media = telebot.types.InputMediaPhoto(img, caption=msg)
             bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                                    media=media, reply_markup=build.keyboard_pvp())
@@ -33,19 +33,19 @@ def callback_user(call):
                   "\nЭмблема: " + str(config.worksheet_build_bg.cell(row=int(index) + 2, column=4).value) + \
                   "\nКвадрат: " + str(config.worksheet_build_bg.cell(row=int(index) + 2, column=5).value) + \
                   "\nЧара: " + str(config.worksheet_build_bg.cell(row=int(index) + 2, column=6).value)
-            img = open('Database/sborki/bg/' + str(item) + '.jpg', 'rb')
+            img = str(config.worksheet_build_bg.cell(row=int(index) + 2, column=7).value)
             media = telebot.types.InputMediaPhoto(img, caption=msg)
             bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                                    media=media, reply_markup=build.keyboard_bg())
 
     if call.data == "major":
-        media = [telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/1.jpg', 'rb'),
+        media = [telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/qWGY28C01v5z8w',
                                                caption="Сборка на БГ от Сергея @IKREMEN"),
-                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/2.jpg', 'rb')),
-                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/3.jpg', 'rb')),
-                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/4.jpg', 'rb')),
-                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/5.jpg', 'rb')),
-                 telebot.types.InputMediaPhoto(open('Database/sborki/bg/major/6.jpg', 'rb'))]
+                 telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/9LlkDIm-2xCpxQ'),
+                 telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/BnERAU-ed_Z4qw'),
+                 telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/vbDrxbqHW1z_aQ'),
+                 telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/q1C1TeqjmGM1XQ'),
+                 telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/ys6OSkXjWtivlA')]
         bot.send_media_group(call.message.chat.id, media)
 
     # Нарсия

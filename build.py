@@ -33,7 +33,7 @@ def call_pvp(message):
     first_name = message.from_user.first_name
     if config.author(message.chat.id, config.swats):
         keyboard = keyboard_pvp()
-        img = open('Database/bz.jpg', 'rb')
+        img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
         bot.send_photo(message.chat.id, img, caption='Выбери интересующую сборку героя:', reply_markup=keyboard)
     else:
         bot_logs.send_message(config.admin_id[0], text='Пользователь {1} @{0} '
@@ -46,5 +46,5 @@ def call_pvp(message):
 
 def call_bg(message):
     keyboard = keyboard_bg()
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     bot.send_photo(message.chat.id, img, caption='Выбери интересующую сборку героя:', reply_markup=keyboard)

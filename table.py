@@ -39,7 +39,7 @@ def keyboard_table():
 
 def call_table(message):
     keyboard = keyboard_table()
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     bot.send_photo(message.chat.id, img, caption='Выбери интересующую команду:', reply_markup=keyboard)
 
 
@@ -54,7 +54,7 @@ def gaid_pvp(call):
           "\n\n4. В каждой пачке: Древнее знание, кошмар, гниль, танец феи и другие топ квадраты." \
           "\n\n5. В каждой пачке: Один из шести героев собран на уклон." \
           "\n\n6. Сборка зависит от прокачки прорыва, реликвии, экипировки."
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
@@ -62,7 +62,7 @@ def gaid_pvp(call):
 
 def adapt(call):
     msg = "Таблица адаптаций:"
-    img = open('Database/table/adaptation.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/zppJ1gMdy2g2-Q'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
@@ -70,7 +70,7 @@ def adapt(call):
 
 def dusha(call):
     msg = "Таблица Снаряжения и Души:"
-    img = open('Database/table/dusha.png', 'rb')
+    img = 'https://disk.yandex.ru/i/eet6qypfXtnhyQ'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
@@ -78,7 +78,7 @@ def dusha(call):
 
 def suvenir(call):
     msg = "Таблица Сувениров:"
-    img = open('Database/table/suvenir.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/c6QVcZEpo_ssIQ'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
@@ -86,23 +86,24 @@ def suvenir(call):
 
 def relik(call):
     msg = "Таблица Реликвии:"
-    img = open('Database/table/relik.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/dsf_ZfZLxBgl8g'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
 
 
 def ecip(call):
-    bot.send_media_group(call.message.chat.id, [telebot.types.InputMediaPhoto(open('Database/table/armor.jpg', 'rb'),
-                                                                              caption="Таблица экипировки."),
-                                                telebot.types.InputMediaPhoto(open('Database/table/shoes.jpg', 'rb')),
-                                                telebot.types.InputMediaPhoto(open('Database/table/weapon.jpg', 'rb')),
-                                                telebot.types.InputMediaPhoto(open('Database/table/helmet.jpg', 'rb'))])
+    bot.send_media_group(call.message.chat.id,
+                         [telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/vf8ZEnLNTK27HQ',
+                                                        caption="Таблица экипировки."),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/k-BJhz84u8SAfA'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/-cS4SdI5B6ffaQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/wU0YR4ruK02gRA')])
 
 
 def titul(call):
     msg = "Таблица титула:"
-    img = open('Database/table/titul.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/wvPOCXmuEW-icg'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
@@ -117,7 +118,7 @@ def sozv(call):
           "\nКрит удар - CRIT" \
           "\nКрит урон - CRIT DMG" \
           "\nКрит. сопротивление (антикрит) - CRIT Resist"
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     media = telebot.types.InputMediaPhoto(img, caption=msg, parse_mode='HTML')
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
@@ -125,22 +126,22 @@ def sozv(call):
 
 def dop(call):
     msg = "Таблица допов:"
-    img = open('Database/table/dops.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/K6aEnfv7MlKhZQ'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
 
 
 def proryv(call):
-    bot.send_media_group(call.message.chat.id, [telebot.types.InputMediaPhoto(open('Database/table/proryv.jpg', 'rb'),
-                                                                              caption="Таблица прорывов."),
-                                                telebot.types.InputMediaPhoto(
-                                                    open('Database/table/proryv2.jpg', 'rb'))])
+    bot.send_media_group(call.message.chat.id,
+                         [telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/hR1ogBm6kSiAcw',
+                                                        caption="Таблица прорывов."),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/_a0X7tBHyjkhLQ')])
 
 
 def pet(call):
     msg = "Таблица питомцев:"
-    img = open('Database/table/pet.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/lxq9AjzxQcHmBQ'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
@@ -148,14 +149,14 @@ def pet(call):
 
 def setka(call):
     msg = "Таблица звездной сетки (Смотрителей):"
-    img = open('Database/table/grid.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/-hu5DDD2B9dkew'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard_table())
 
 
 def abbr(call):
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     msg = "<b>Таланты</b>:" \
           "\nОЗ - огненная защита" \
           "\nСО - священный огонь" \

@@ -93,7 +93,7 @@ def call_user(message):
         elif message.text.lower() == "подземелья" or message.text.lower() == "/podzem" \
                 or message.text.lower() == "/podzem@knightofnarsia_bot":
             keyboard = keyboard_podzem()
-            img = open('Database/bz.jpg', 'rb')
+            img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
             bot.send_photo(message.chat.id, img, caption='Выбери интересующее подземелье.', reply_markup=keyboard)
 
         elif message.text.lower() == "босс" or message.text.lower() == "/boss" \

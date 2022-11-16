@@ -1,6 +1,8 @@
 import telebot
 import config
 from PIL import Image
+import requests
+import numpy as np
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
 bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
@@ -47,7 +49,7 @@ def creative(message):
     keyboard = keyboard_creative()
     key_guide = telebot.types.InlineKeyboardButton(text='Инструкция', callback_data='creative_guide')
     keyboard.add(key_guide)
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     msg = 'Выбери команду.\nДля создания лого отправь /logo'
     bot.send_photo(message.chat.id, img, caption=msg, reply_markup=keyboard)
 
@@ -70,7 +72,7 @@ def creative_guide(call):
           '\n\nТеги:' \
           '\n#castleclash\n' \
           '#cbcevent https://discord.gg/castleclash'
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     keyboard = keyboard_creative()
     keyboard.add(telebot.types.InlineKeyboardButton('Пример видео', url='https://www.youtube.com/watch?v=JFgpF6lJB4Y'))

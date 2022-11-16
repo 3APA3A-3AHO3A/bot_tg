@@ -131,7 +131,7 @@ def donate(message):
     first_name = message.from_user.first_name
     keyboard = telebot.types.InlineKeyboardMarkup()
     keyboard.add(telebot.types.InlineKeyboardButton('donate', url='https://yoomoney.ru/to/410012184021666/0'))
-    img = open('Database/donate.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/IC3X2gHTfg53Zg'
     msg = 'Если Вы хотите поддержать разработчика бота, то можете отправить средства на:' \
           '\n\n<b>Тинькофф</b>:' \
           '\nНомер телефона: <code>+79087057188</code>' \

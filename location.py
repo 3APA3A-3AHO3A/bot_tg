@@ -18,13 +18,13 @@ def fakel(chat_id):
           "\nОккультист: крепкая связь, выживание, крылатое возрождение, печать бездны" \
           "\nПо питомцам: обязательно два осьминога, морозный Дракоша, лодка, два луноволка" \
           "\nПосмотрите видео, как добавить помощника по ссылке."
-    bot.send_media_group(chat_id, [telebot.types.InputMediaPhoto(open('Database/fakel/pack.png', 'rb')),
-                                   telebot.types.InputMediaPhoto(open('Database/fakel/bard.jpg', 'rb')),
-                                   telebot.types.InputMediaPhoto(open('Database/fakel/treant.jpg', 'rb')),
-                                   telebot.types.InputMediaPhoto(open('Database/fakel/dino.png', 'rb')),
-                                   telebot.types.InputMediaPhoto(open('Database/fakel/chezh.jpg', 'rb')),
-                                   telebot.types.InputMediaPhoto(open('Database/fakel/okkult.jpg', 'rb')),
-                                   telebot.types.InputMediaPhoto(open('Database/fakel/mechnick.jpg', 'rb'))])
+    bot.send_media_group(chat_id, [telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/vIZaGM3A9pbQHw'),
+                                   telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Ic1jbd8I3sDkzw'),
+                                   telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/R2yVH8kaZp7xbA'),
+                                   telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/bRhK8ukEPEiVnQ'),
+                                   telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/qqnWSUgVtYa7wQ'),
+                                   telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/L-w94K5Y6-ZpsQ'),
+                                   telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/tmIrRnY2fmZ_Dw')])
     bot.send_message(chat_id, msg, reply_markup=keyboard)
 
 
@@ -41,12 +41,12 @@ def poryadok(call):
           "Высадка: первым Голем, за ним остальные под ноги смотрителю. " \
           "Рудольфа можно заменить на Крокко/Чикабум"
     bot.send_media_group(call.message.chat.id,
-                         [telebot.types.InputMediaPhoto(open('Database/smotr/poryadok/poryadok1.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/poryadok/poryadok2.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/poryadok/poryadok3.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/poryadok/poryadok4.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/poryadok/poryadok5.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/poryadok/poryadok6.jpg', 'rb'))])
+                         [telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/hHlEzKcSsvYudA'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/ZG736ShlhWYt1w'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/G3o12M3-_2OSGQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Eqz3pUw7fXmmJQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/A_vf7_fkHkdlFQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/09mbxExEk-JL9w')])
     bot.send_message(call.message.chat.id, msg, reply_markup=keyboard)
 
 
@@ -57,13 +57,13 @@ def prorok(call):
           "\nРаскол, Священный огонь, Зелье безумия, Пиромаг." \
           "\n<i><b>На тыкву</b></i>: Раскол, Священный огонь, Кровавый барьер, Священный огонь."
     bot.send_media_group(call.message.chat.id,
-                         [telebot.types.InputMediaPhoto(open('Database/smotr/prorok/pack.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok1.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok2.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok3.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok4.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok5.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/prorok/prorok6.png', 'rb'))])
+                         [telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/v_OF6rZC03oneQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/fWDOwvm85Bm2mg'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/wbdCYW1xvIh5Tw'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/bqkK2-r7EuchsA'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Zo55KycRR1jySg'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Twf1J4If02CoTA'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Wu67iB4hFNnhFg')])
     bot.send_message(call.message.chat.id, msg, parse_mode='HTML')
 
 
@@ -71,12 +71,12 @@ def svyatoy(call):
     keyboard = telebot.types.InlineKeyboardMarkup()
     keyboard.add(telebot.types.InlineKeyboardButton('Видео', url='https://youtu.be/Geq5h3rP_gM'))
     bot.send_media_group(call.message.chat.id,
-                         [telebot.types.InputMediaPhoto(open('Database/smotr/svyat/svyat1.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/svyat/svyat2.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/svyat/svyat3.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/svyat/svyat4.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/svyat/svyat5.jpg', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/smotr/svyat/svyat6.jpg', 'rb'))])
+                         [telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/SezHrYB7L0ewFA'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/ULMvahr5TVgZMQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/2iJCGveHSaGhow'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/I3ARgLx_fNvI9g'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/ANUxp2vyFdh8XQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/ANUxp2vyFdh8XQ')])
     bot.send_message(call.message.chat.id,
                      "Святой:\n" +
                      "Динамо: Щит дракона, выживание, дрогго\n" +
@@ -96,13 +96,13 @@ def boss(message):
     keyboard = telebot.types.InlineKeyboardMarkup()
     keyboard.add(telebot.types.InlineKeyboardButton('Видео-прохождение', url='https://youtu.be/wJnQrLUcUZ8'))
     bot.send_media_group(message.chat.id,
-                         [telebot.types.InputMediaPhoto(open('Database/boss/pack.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/dino.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/sparki.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/sudya.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/vor.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/tycva.png', 'rb')),
-                          telebot.types.InputMediaPhoto(open('Database/boss/burekril.png', 'rb'))])
+                         [telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/o1atSjLlcOeAOQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/OddX_kbNCJEQnw'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/_4YhRNLMmFlXwg'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/gcjrk_H-w6aW9w'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/WvJczu6fH5fNZQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/iLIlW7WGzK73eQ'),
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/J7n-1ZZyOQ70jw')])
     bot.send_message(message.chat.id, "Важно!\n❗Не ставить чарой: пиромагов, тамплиеров, мастеров клинка."
                                       "\n❗Ставить на героев питомцев, которые не атакуют и дают точность около 20к."
                                       "\n❗Динамо без Пета ставится перед боссом, остальные герои позади него.",
@@ -110,7 +110,7 @@ def boss(message):
 
 
 def more(call):
-    img = open('Database/podzem/sea.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/H2OcA5rg-5UrdA'
     msg = "Сборка на море/месу/лаву:" \
           "\nБард (любая сборка): каменная кожа, священный огонь, священный суд" \
           "\nКнязь Тыква: щит дракона, воодушевление, священный суд" \
@@ -124,7 +124,7 @@ def more(call):
 
 
 def razlom(call):
-    img = open('Database/podzem/fault.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/JdULohj1BnTjTg'
     msg = "Сборка на разлом/пустошь/саммит:" \
           "\nМадам Боа: раскол, воодушевление, пиромаг. Питомец иллюзорность" \
           "\nСтрелок: раскол, священный огонь, Обряд лечения/Пиромаг (питомец любой)" \

@@ -26,7 +26,7 @@ def keyboard_narsia():
 
 def call_narsiya(message):
     keyboard = keyboard_narsia()
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     bot.send_photo(message.chat.id, img, caption='Выбери интересующую механику:', reply_markup=keyboard)
 
 
@@ -38,7 +38,7 @@ def kamen(call):
           "\n2.Нажать на кнопку молотка." \
           "\n3.Выбрать количество камня, например, стрелкой вправо максимальное." \
           "\n4.Нажать кнопку подарить."
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard)
@@ -54,7 +54,7 @@ def spam(call):
           "\n4.Выбрать и поставить на плитки 3х слабых героев." \
           "\n5.Нажать на кнопку сохранить." \
           "\nИспользовать пачку, пока не закончится ХП пачки, далее блок Отхил"
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard)
@@ -70,7 +70,7 @@ def zahvat(call):
           "\n4.Нажать на кнопку ОК." \
           "\n5.Перед вами откроется окно, где видно время марша, время возвращения, расход воды." \
           "\n6.Нажать на кнопку Высадить."
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     media = telebot.types.InputMediaPhoto(img, caption=msg)
     bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                            media=media, reply_markup=keyboard)
@@ -79,7 +79,7 @@ def zahvat(call):
 def othill(call):
     keyboard = keyboard_narsia()
     keyboard.add(telebot.types.InlineKeyboardButton('Видео', url='https://youtu.be/Zgi10tD15Dk'))
-    img = open('Database/othill.png', 'rb')
+    img = 'https://disk.yandex.ru/i/x0M8jvuNCWilag'
     msg = "Герои при полном истощении уходят в КД на 10 минут (пример на фото)." \
           "\nДля восстановления ХП героев после истощения:" \
           "\n1.Нажать справа на одну из трех линий (это ваши пачки)." \
@@ -94,7 +94,7 @@ def othill(call):
 
 def pos(call):
     keyboard = keyboard_narsia()
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     msg = "Для атаки поселка/города/импа:" \
           "\n1.Нажать справа на одну из трех линий (это ваши пачки)." \
           "\n2.Нажать на кнопку Создать команду." \
@@ -111,7 +111,7 @@ def pos(call):
 
 def deffence(call):
     keyboard = keyboard_narsia()
-    img = open('Database/bz.jpg', 'rb')
+    img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     msg = "Для защиты поселка/города:" \
           "\n1.Нажать справа на одну из трех линий (это ваши пачки)." \
           "\n2.Нажать на кнопку Создать команду." \
