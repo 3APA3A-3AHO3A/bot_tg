@@ -76,7 +76,7 @@ def svyatoy(call):
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/2iJCGveHSaGhow'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/I3ARgLx_fNvI9g'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/ANUxp2vyFdh8XQ'),
-                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/ANUxp2vyFdh8XQ')])
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/W71F-fHLj-jPyA')])
     bot.send_message(call.message.chat.id,
                      "Святой:\n" +
                      "Динамо: Щит дракона, выживание, дрогго\n" +
