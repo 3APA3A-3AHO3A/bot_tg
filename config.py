@@ -24,7 +24,6 @@ users = []
 swats = []
 pvp = []
 bg = []
-# test_users = [1729215365, 454589284]
 
 # Пользователи
 for i in range(ex_user.max_row - 1):
