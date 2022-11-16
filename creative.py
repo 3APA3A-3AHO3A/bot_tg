@@ -1,8 +1,5 @@
 import telebot
 import config
-from PIL import Image
-import requests
-import numpy as np
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
 bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
@@ -13,29 +10,32 @@ def logo_mailing(message):
         user_name = message.from_user.username
         first_name = message.from_user.first_name
         fileid = message.photo[-1].file_id
-        bot.send_message(message.chat.id, text='Началась обработка фото!')
         file_info = bot.get_file(fileid)
         downloaded_file = bot.download_file(file_info.file_path)
         with open("image.jpg", 'wb') as new_file:
             new_file.write(downloaded_file)
 
+        img = open('image.jpg', 'rb')
+        msg = 'Выбери позицию логотипа.'
+        keyboard = keyboard_logo()
+        keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки видео', url='https://g.igg.com/EtngH2'))
+        keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки фото', url='https://g.igg.com/oXK3JZ'))
+        bot.send_photo(message.chat.id, img, caption=msg, reply_markup=keyboard, parse_mode='HTML')
+
         msg_logs = f'Пользователь {first_name} @{user_name}\nID: <code>' + str(message.chat.id) + '</code> отправил.'
         bot_logs.send_photo(config.admin_id[0], downloaded_file, caption=msg_logs, parse_mode='HTML')
-
-        img = open('image.jpg', 'rb')
-        logo = open('Database/logo.png', 'rb')
-        background = Image.open(img)
-        foreground = Image.open(logo)
-        background.paste(foreground, (0, 0), foreground)
-        background.save('image.jpg')
-
-        img_logo = open('image.jpg', 'rb')
-        msg = "#castleclash\n" \
-              "#cbcevent https://discord.gg/castleclash"
-        keyboard = keyboard_creative()
-        bot.send_photo(message.chat.id, img_logo, caption=msg, reply_markup=keyboard, parse_mode='HTML')
     else:
         bot.send_message(message.chat.id, 'Вызовите заново команду /logo и отправьте фото!')
+
+
+def keyboard_logo():
+    keyboard = telebot.types.InlineKeyboardMarkup()
+    top_left_position = telebot.types.InlineKeyboardButton(text='↖', callback_data='top_left_position')
+    top_right_position = telebot.types.InlineKeyboardButton(text='↗', callback_data='top_right_position')
+    bottom_left_position = telebot.types.InlineKeyboardButton(text='↙', callback_data='bottom_left_position')
+    bottom_right_position = telebot.types.InlineKeyboardButton(text='↘', callback_data='bottom_right_position')
+    keyboard.add(top_left_position, top_right_position, bottom_left_position, bottom_right_position, row_width=2)
+    return keyboard
 
 
 def keyboard_creative():
@@ -57,7 +57,7 @@ def creative(message):
 def creative_guide(call):
     msg = 'Гайд по акции "Креативщик":' \
           '\n\nИзображения:' \
-          '\n1. Сделайте 6 скриншотов в игре на любую тематику.'\
+          '\n1. Сделайте 6 скриншотов в игре на любую тематику.' \
           '\n2. Добавьте логотип IGG на изображение (можно в нашем боте через команду /logo).' \
           '\n3. Создайте пост на платформе, например VK, Instagram.\n❗ Одно фото - один пост.' \
           '\n4. Добавьте теги в пост (теги указаны ниже).' \
