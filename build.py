@@ -7,6 +7,17 @@ bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
 
 def keyboard_pvp():
     keyboard = telebot.types.InlineKeyboardMarkup()
+    # for index, item in enumerate(config.pvp):
+    #         msg = "Герой: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=2).value) + \
+    #               "\nТалант: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=3).value) + \
+    #               "\nЭмблема: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=4).value) + \
+    #               "\nКвадрат: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=5).value) + \
+    #               "\nЧара: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=6).value) + \
+    #               "\nСозвездия: " + str(config.worksheet_build_pvp.cell(row=int(index) + 2, column=7).value)
+    #         img = open('Database/sborki/' + str(item) + '.jpg', 'rb')
+    #         media = telebot.types.InputMediaPhoto(img, caption=msg)
+    #         bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
+    #                                media=media, reply_markup=build.keyboard_pvp())
     key_dinamo = telebot.types.InlineKeyboardButton(text='Динамо', callback_data='dinamo')
     key_chezh_poryadok = telebot.types.InlineKeyboardButton(text='Чех (Порядок)',
                                                             callback_data='chezh_poryadok')
@@ -16,6 +27,7 @@ def keyboard_pvp():
     key_povelitel = telebot.types.InlineKeyboardButton(text='Повелитель', callback_data='povelitel')
     key_mechnic = telebot.types.InlineKeyboardButton(text='Мечник', callback_data='mechnic')
     key_bard = telebot.types.InlineKeyboardButton(text='Бард', callback_data='bard')
+    key_glaz = telebot.types.InlineKeyboardButton(text='Дурной глаз', callback_data='glaz')
     key_hudozhka = telebot.types.InlineKeyboardButton(text='Художница', callback_data='hudozhka')
     key_mari = telebot.types.InlineKeyboardButton(text='Мэри', callback_data='mari')
     key_fox = telebot.types.InlineKeyboardButton(text='Лис', callback_data='fox')
@@ -33,6 +45,7 @@ def keyboard_pvp():
         key_bard,
         key_baron,
         key_frostee,
+        key_glaz,
         key_povelitel,
         key_okkult,
         key_hudozhka,
