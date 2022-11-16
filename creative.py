@@ -24,8 +24,10 @@ def logo_mailing(message):
 
         msg_logs = f'Пользователь {first_name} @{user_name}\nID: <code>' + str(message.chat.id) + '</code> отправил.'
         bot_logs.send_photo(config.admin_id[0], downloaded_file, caption=msg_logs, parse_mode='HTML')
+    elif message.content_type == "text":
+        pass
     else:
-        bot.send_message(message.chat.id, 'Вызовите заново команду /logo и отправьте фото!')
+        bot.send_message(message.chat.id, 'Вызовите заново команду /logo и отправьте изображение!')
 
 
 def keyboard_logo():
