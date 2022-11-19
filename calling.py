@@ -147,7 +147,7 @@ def call_user(message):
         bot.reply_to(message, 'По имени и отчеству, пожалуйста')
 
     elif "@serj_kkk некультурный человек" in message.text.lower():
-        bot.reply_to(message, 'Я со своим малым @gAHUJI_cKUJI полностью поддерживаю')
+        bot.reply_to(message, 'Я со своим малым полностью поддерживаю')
 
     elif "вадим бот" in message.text.lower():
         bot.reply_to(message, 'Нет, он создатель.')
