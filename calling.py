@@ -153,7 +153,9 @@ def call_user(message):
             or ("вадик" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower()))\
             or ("задик" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower()))\
             or ("ваноза" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower()))\
-            or ("заноза" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower())):
+            or ("заноза" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower()))\
+            or ("vadik" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower()))\
+            or ("vadim" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower())):
         bot.reply_to(message, 'Нет, он создатель.')
 
 
