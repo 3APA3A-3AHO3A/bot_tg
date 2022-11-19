@@ -53,7 +53,7 @@ def creative(message):
     keyboard.add(key_guide)
     img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
     msg = 'Выбери команду.\nДля создания лого отправь /logo'
-    bot.send_photo(message.chat.id, img, caption=msg, reply_markup=keyboard)
+    bot.send_photo(message.chat.id, img, caption=msg, reply_markup=keyboard, protect_content=True)
 
 
 def creative_guide(call):

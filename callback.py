@@ -47,7 +47,7 @@ def callback_user(call):
                  telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/vbDrxbqHW1z_aQ'),
                  telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/q1C1TeqjmGM1XQ'),
                  telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/ys6OSkXjWtivlA')]
-        bot.send_media_group(call.message.chat.id, media)
+        bot.send_media_group(call.message.chat.id, media, protect_content=True)
 
     # Нарсия
     elif call.data == "kamen":

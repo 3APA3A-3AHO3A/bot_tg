@@ -24,8 +24,9 @@ def fakel(chat_id):
                                    telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/bRhK8ukEPEiVnQ'),
                                    telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/qqnWSUgVtYa7wQ'),
                                    telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/L-w94K5Y6-ZpsQ'),
-                                   telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/tmIrRnY2fmZ_Dw')])
-    bot.send_message(chat_id, msg, reply_markup=keyboard)
+                                   telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/tmIrRnY2fmZ_Dw')],
+                         protect_content=True)
+    bot.send_message(chat_id, msg, reply_markup=keyboard, protect_content=True)
 
 
 def poryadok(call):
@@ -46,8 +47,9 @@ def poryadok(call):
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/G3o12M3-_2OSGQ'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Eqz3pUw7fXmmJQ'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/A_vf7_fkHkdlFQ'),
-                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/09mbxExEk-JL9w')])
-    bot.send_message(call.message.chat.id, msg, reply_markup=keyboard)
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/09mbxExEk-JL9w')],
+                         protect_content=True)
+    bot.send_message(call.message.chat.id, msg, reply_markup=keyboard, protect_content=True)
 
 
 def prorok(call):
@@ -63,8 +65,9 @@ def prorok(call):
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/bqkK2-r7EuchsA'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Zo55KycRR1jySg'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Twf1J4If02CoTA'),
-                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Wu67iB4hFNnhFg')])
-    bot.send_message(call.message.chat.id, msg, parse_mode='HTML')
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Wu67iB4hFNnhFg')],
+                         protect_content=True)
+    bot.send_message(call.message.chat.id, msg, parse_mode='HTML', protect_content=True)
 
 
 def svyatoy(call):
@@ -76,7 +79,8 @@ def svyatoy(call):
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/2iJCGveHSaGhow'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/I3ARgLx_fNvI9g'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/ANUxp2vyFdh8XQ'),
-                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/W71F-fHLj-jPyA')])
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/W71F-fHLj-jPyA')],
+                         protect_content=True)
     bot.send_message(call.message.chat.id,
                      "Святой:\n" +
                      "Динамо: Щит дракона, выживание, дрогго\n" +
@@ -89,7 +93,7 @@ def svyatoy(call):
                      "сразу всех остальных.\n" +
                      "Важно - никаких пиромагов, иначе проигрыш. Чарой лучше ставить расколенный доспех.\n" +
                      "***Если Динамо не выживает с щитом порядка (квадрат), пробуйте барьер",
-                     reply_markup=keyboard)
+                     reply_markup=keyboard, protect_content=True)
 
 
 def boss(message):
@@ -102,11 +106,12 @@ def boss(message):
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/gcjrk_H-w6aW9w'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/WvJczu6fH5fNZQ'),
                           telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/iLIlW7WGzK73eQ'),
-                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/J7n-1ZZyOQ70jw')])
+                          telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/J7n-1ZZyOQ70jw')],
+                         protect_content=True)
     bot.send_message(message.chat.id, "Важно!\n❗Не ставить чарой: пиромагов, тамплиеров, мастеров клинка."
                                       "\n❗Ставить на героев питомцев, которые не атакуют и дают точность около 20к."
                                       "\n❗Динамо без Пета ставится перед боссом, остальные герои позади него.",
-                     reply_markup=keyboard)
+                     reply_markup=keyboard, protect_content=True)
 
 
 def more(call):

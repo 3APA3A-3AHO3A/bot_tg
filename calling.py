@@ -28,12 +28,14 @@ def call_user(message):
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard.row('ПВП', 'БГ', 'Локации')
             keyboard.row('Справки', 'Нарсия', 'Креативщик')
-            bot.send_message(message.from_user.id, "Привет, " + message.from_user.first_name +
-                             ", бот создан KnightsOfNarsia. \nСправка /help ", reply_markup=keyboard)
+            bot.send_message(message.from_user.id,
+                             "Привет, " + message.from_user.first_name +
+                             ", бот создан KnightsOfNarsia. \nСправка /help ",
+                             protect_content=True, reply_markup=keyboard)
 
         elif message.text == "/delete" or message.text.lower() == "/delete@knightofnarsia_bot":
             keyboard = telebot.types.ReplyKeyboardRemove()
-            bot.send_message(message.chat.id, "Удаляю клавиатуру", reply_markup=keyboard)
+            bot.send_message(message.chat.id, "Удаляю клавиатуру", protect_content=True, reply_markup=keyboard)
 
         elif message.text == "/help" or message.text.lower() == "/help@knightofnarsia_bot":
             keyboard = telebot.types.InlineKeyboardMarkup()
@@ -55,7 +57,8 @@ def call_user(message):
                              '\n/donate - поддержать создателя бота.' +
                              '\n/delete - удалить клавиатуру, если она Вам мешает.' +
                              '\nЕсли остались вопросы или пожелания, напишите создателю бота.' +
-                             '\nНаш канал по бесплатным самоцветам по ссылке ниже.', reply_markup=keyboard)
+                             '\nНаш канал по бесплатным самоцветам по ссылке ниже.',
+                             protect_content=True, reply_markup=keyboard)
 
         elif message.text.lower() == "нарсия" or message.text.lower() == "/narsiya" \
                 or message.text.lower() == "/narsiya@knightofnarsia_bot":
@@ -73,13 +76,15 @@ def call_user(message):
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard.row('Смотрители', 'Босс')
             keyboard.row('Факела', 'Подземелья', 'Назад')
-            bot.send_message(message.from_user.id, "Выбери интересующую локацию.", reply_markup=keyboard)
+            bot.send_message(message.from_user.id, "Выбери интересующую локацию.",
+                             protect_content=True, reply_markup=keyboard)
 
         elif message.text.lower() == "назад":
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
             keyboard.row('ПВП', 'БГ', 'Локации')
             keyboard.row('Справки', 'Нарсия', 'Креативщик')
-            bot.send_message(message.from_user.id, "Выбери интересующую команду.", reply_markup=keyboard)
+            bot.send_message(message.from_user.id, "Выбери интересующую команду.",
+                             protect_content=True, reply_markup=keyboard)
 
         elif message.text.lower() == "смотрители" or message.text.lower() == "/smotr" \
                 or message.text.lower() == "/smotr@knightofnarsia_bot":
@@ -92,13 +97,15 @@ def call_user(message):
                 key_poryadok,
                 key_prorok,
             )
-            bot.send_message(message.chat.id, text='Выбери интересующего смотрителя:', reply_markup=keyboard)
+            bot.send_message(message.chat.id, text='Выбери интересующего смотрителя:',
+                             protect_content=True, reply_markup=keyboard)
 
         elif message.text.lower() == "подземелья" or message.text.lower() == "/podzem" \
                 or message.text.lower() == "/podzem@knightofnarsia_bot":
             keyboard = keyboard_podzem()
             img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
-            bot.send_photo(message.chat.id, img, caption='Выбери интересующее подземелье.', reply_markup=keyboard)
+            bot.send_photo(message.chat.id, img, caption='Выбери интересующее подземелье.',
+                           protect_content=True, reply_markup=keyboard)
 
         elif message.text.lower() == "босс" or message.text.lower() == "/boss" \
                 or message.text.lower() == "/boss@knightofnarsia_bot":

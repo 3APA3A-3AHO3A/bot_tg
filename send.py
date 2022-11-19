@@ -10,12 +10,13 @@ def message_mailing(message):
         user_name = message.from_user.username
         text = message.text
         if "-" in message.text:
-            bot.send_message(message.chat.id, text="Рассылка отменена")
+            bot.send_message(message.chat.id, text="Рассылка отменена", protect_content=True)
         else:
-            bot.send_message(message.chat.id, text='Рассылка начата!')
+            bot.send_message(message.chat.id, text='Рассылка начата!', protect_content=True)
             for i in config.users:
                 try:
-                    bot.send_message(i, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
+                    bot.send_message(i, text="Сообщение от @{0}\n\n".format(user_name) + str(text),
+                                     protect_content=True)
                 except:
                     pass
             try:
@@ -25,12 +26,12 @@ def message_mailing(message):
                 bot.send_message(-1001467336173, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
             except:
                 pass
-            bot.send_message(message.chat.id, text=' Рассылка завершена!')
+            bot.send_message(message.chat.id, text=' Рассылка завершена!', protect_content=True)
     elif message.content_type == "photo" or message.content_type == "video":
         bot.send_message(message.chat.id, text='Рассылка начата!')
         for i in config.users:
             try:
-                bot.copy_message(chat_id=i, from_chat_id=message.chat.id, message_id=message.id)
+                bot.copy_message(chat_id=i, from_chat_id=message.chat.id, message_id=message.id, protect_content=True)
             except:
                 pass
         try:
@@ -44,7 +45,7 @@ def message_mailing(message):
             bot.copy_message(chat_id=-1001467336173, from_chat_id=message.chat.id, message_id=message.id)
         except:
             pass
-        bot.send_message(message.chat.id, text=' Рассылка завершена!')
+        bot.send_message(message.chat.id, text=' Рассылка завершена!', protect_content=True)
 
 
 def message_mailing_bot(message):
@@ -52,31 +53,33 @@ def message_mailing_bot(message):
         user_name = message.from_user.username
         text = message.text
         if "-" in message.text:
-            bot.send_message(message.chat.id, text="Рассылка отменена")
+            bot.send_message(message.chat.id, text="Рассылка отменена", protect_content=True)
         else:
-            bot.send_message(message.chat.id, text='Рассылка начата!')
+            bot.send_message(message.chat.id, text='Рассылка начата!', protect_content=True)
             for i in config.users:
                 try:
-                    bot.send_message(i, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
+                    bot.send_message(i, text=f"Сообщение от @{user_name}\n\n" + str(text), protect_content=True)
                 except:
                     pass
             try:
-                bot.send_message(-1001467336173, text="Сообщение от @{0}\n\n".format(user_name) + str(text))
+                bot.send_message(-1001467336173, text=f"Сообщение от @{user_name}\n\n" + str(text),
+                                 protect_content=True)
             except:
                 pass
-            bot.send_message(message.chat.id, text=' Рассылка завершена!')
+            bot.send_message(message.chat.id, text=' Рассылка завершена!', protect_content=True)
     elif message.content_type == "photo" or message.content_type == "video":
-        bot.send_message(message.chat.id, text='Рассылка начата!')
+        bot.send_message(message.chat.id, text='Рассылка начата!', protect_content=True)
         for i in config.users:
             try:
-                bot.copy_message(chat_id=i, from_chat_id=message.chat.id, message_id=message.id)
+                bot.copy_message(chat_id=i, from_chat_id=message.chat.id, message_id=message.id, protect_content=True)
             except:
                 pass
         try:
-            bot.copy_message(chat_id=-1001467336173, from_chat_id=message.chat.id, message_id=message.id)
+            bot.copy_message(chat_id=-1001467336173, from_chat_id=message.chat.id, message_id=message.id,
+            protect_content = True)
         except:
             pass
-        bot.send_message(message.chat.id, text=' Рассылка завершена!')
+        bot.send_message(message.chat.id, text=' Рассылка завершена!', protect_content=True)
 
 
 def new_member(message):
@@ -98,7 +101,7 @@ def new_member(message):
               "в котором <b>ОБЯЗАТЕЛЬНЫ</b>. Имеет смысл сразу же узнать подробности о режиме и " \
               "разобраться в нём, чтобы в будущем не было проблем." \
               "\n\nЖдем Ваших вопросов и, прежде всего, активной игры🗡🛡"
-        bot.send_message(message.chat.id, msg, parse_mode='HTML')
+        bot.send_message(message.chat.id, msg, parse_mode='HTML', protect_content=True)
     # Штурмовики
     elif message.chat.id == -1001410785964:
         first_name = message.new_chat_members[0].first_name
@@ -116,14 +119,14 @@ def new_member(message):
               "воюющие на ТОП-уровне; интересные и важные задачи в Нарсии, от выполнения которых зависит " \
               "Наш реальный результат." \
               "\nДобро пожаловать в команду👍"
-        bot.send_message(message.chat.id, msg, parse_mode='HTML')
+        bot.send_message(message.chat.id, msg, parse_mode='HTML', protect_content=True)
     # Спецназ
     elif message.chat.id == -1001100054328:
         first_name = message.new_chat_members[0].first_name
         user_name = message.new_chat_members[0].username
         msg = f"Добро пожаловать в <b>Спецназ</b>, {first_name} @{user_name} 🤝" \
               "\n\nТеперь Ты не являешься сопливым бойцом и Сам можешь быть наставником новичкам🗡🛡"
-        bot.send_message(message.chat.id, msg, parse_mode='HTML')
+        bot.send_message(message.chat.id, msg, parse_mode='HTML', protect_content=True)
 
 
 def donate(message):

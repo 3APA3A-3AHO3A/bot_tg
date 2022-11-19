@@ -27,7 +27,8 @@ def keyboard_narsia():
 def call_narsiya(message):
     keyboard = keyboard_narsia()
     img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
-    bot.send_photo(message.chat.id, img, caption='Выбери интересующую механику:', reply_markup=keyboard)
+    bot.send_photo(message.chat.id, img, caption='Выбери интересующую механику:', reply_markup=keyboard,
+                   protect_content=True)
 
 
 def kamen(call):
