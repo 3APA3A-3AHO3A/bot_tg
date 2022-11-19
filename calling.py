@@ -146,6 +146,9 @@ def call_user(message):
     elif "скюль ты" in message.text.lower() or "скюль, ты" in message.text.lower():
         bot.reply_to(message, 'По имени и отчеству, пожалуйста')
 
+    elif "@Serj_Kkk некультурный человек" in message.text.lower():
+        bot.reply_to(message, 'Я со своим малым @gAHUJI_cKUJI полностью поддерживаю')
+
 
 def keyboard_podzem():
     keyboard = telebot.types.InlineKeyboardMarkup()
