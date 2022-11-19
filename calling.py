@@ -149,10 +149,11 @@ def call_user(message):
     elif "@serj_kkk некультурный человек" in message.text.lower():
         bot.reply_to(message, 'Я со своим малым полностью поддерживаю')
 
-    elif "вадим бот" in message.text.lower() or "вадик бот" in message.text.lower() \
-            or ("задик" in message.text.lower() and "бот" in message.text.lower())\
-            or ("ваноза" in message.text.lower() and "бот" in message.text.lower())\
-            or ("заноза" in message.text.lower() and "бот" in message.text.lower()):
+    elif ("вадим" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower()))\
+            or ("вадик" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower()))\
+            or ("задик" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower()))\
+            or ("ваноза" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower()))\
+            or ("заноза" in message.text.lower() and ("бот" in message.text.lower() or "бот" in message.text.lower())):
         bot.reply_to(message, 'Нет, он создатель.')
 
 
