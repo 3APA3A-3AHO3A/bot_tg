@@ -17,12 +17,13 @@ bot = telebot.TeleBot(config.BOT_TOKEN)
 
 @bot.message_handler(content_types=["photo"])
 def logo_send(message):
-    img = logotip.save_photo(message)
-    img_logo = logotip.create_logo(img)
-    bot.delete_message(message.chat.id, message.message_id)
-    msg = "#castleclash\n" \
-          "#cbcevent https://discord.gg/castleclash"
-    bot.send_photo(chat_id=message.chat.id, photo=img_logo, caption=msg)
+    if config.author(message.chat.id, config.users):
+        img = logotip.save_photo(message)
+        img_logo = logotip.create_logo(img)
+        bot.delete_message(message.chat.id, message.message_id)
+        msg = "#castleclash\n" \
+              "#cbcevent https://discord.gg/castleclash"
+        bot.send_photo(chat_id=message.chat.id, photo=img_logo, caption=msg)
 
 
 @bot.message_handler(commands=['logo'])
