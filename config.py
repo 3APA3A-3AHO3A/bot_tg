@@ -34,7 +34,7 @@ for i in range(ex_user.max_row - 1):
     else:
         users.append(int(id_users))
 # Test-chat
-users.append(-1001700330817)
+# users.append(-1001700330817)
 
 # Спецназ
 for i in range(ex_swats.max_row - 1):
