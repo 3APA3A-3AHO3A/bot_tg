@@ -145,3 +145,4 @@ def donate(message):
           '\n\nОтсканируйте QR-code камерой телефона или перейдите по ссылке.'
     bot.send_photo(message.chat.id, img, caption=msg, reply_markup=keyboard, parse_mode='HTML')
     bot_logs.send_message(config.admin_id[0], text=f'Пользователь {first_name} @{user_name} открыл пожертвование.')
+    bot.delete_message(message.chat.id, message.message_id)

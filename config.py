@@ -1,6 +1,6 @@
 import openpyxl
 from urllib import request
-
+import os
 
 url = "https://docs.google.com/spreadsheets/d/1LzTIXOesLNGy-9yDxF_2Xab9ESAoWdLj/" \
       "export?format=xlsx&id=1LzTIXOesLNGy-9yDxF_2Xab9ESAoWdLj"
@@ -18,6 +18,7 @@ ex_swats = excel_db["Спецназ"]
 worksheet_build_pvp = excel_db["ПВП"]
 worksheet_build_bg = excel_db["БГ"]
 excel_db.close()
+os.remove('Database/database.xlsx')
 
 admin_id = [454589284, 1328571684, 1616544477]
 users = []

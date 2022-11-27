@@ -9,16 +9,31 @@ import config
 import callback
 import calling
 import creative
+import logotip
 import send
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
 
 
+@bot.message_handler(content_types=["photo"])
+def logo_send(message):
+    img = logotip.save_photo(message)
+    img_logo = logotip.create_logo(img)
+    bot.delete_message(message.chat.id, message.message_id)
+    msg = "#castleclash\n" \
+          "#cbcevent https://discord.gg/castleclash"
+    bot.send_photo(chat_id=message.chat.id, photo=img_logo, caption=msg)
+
+
 @bot.message_handler(commands=['logo'])
 def send_mail(message):
-    msg = bot.send_message(message.chat.id, 'Отправьте изображение боту, на которое нужно наложить логотип.',
-                           protect_content=True)
-    bot.register_next_step_handler(msg, creative.logo_mailing)
+    msg = 'Выберите позицию логотипа.'
+    keyboard = creative.keyboard_logo()
+    keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки видео', url='https://g.igg.com/EtngH2'))
+    keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки фото', url='https://g.igg.com/oXK3JZ'))
+    img = 'https://disk.yandex.ru/i/Qv-USJ8d3vsfww'
+    bot.send_photo(message.chat.id, img, caption=msg, reply_markup=keyboard, parse_mode='HTML')
+    bot.delete_message(message.chat.id, message.message_id)
 
 
 @bot.message_handler(commands=['donate'])

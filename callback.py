@@ -5,12 +5,15 @@ import creative
 import location
 import narsiya
 import table
-from PIL import Image
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
+x = -40
+y = -100
 
 
 def callback_user(call):
+    global x
+    global y
     # ПВП
     strid = str(call.data)
     for index, item in enumerate(config.pvp):
@@ -130,77 +133,45 @@ def callback_user(call):
 
     # logo
     elif call.data == 'top_left_position':
-        img = open('image.jpg', 'rb')
-        logo = open('Database/logo.png', 'rb')
-        background = Image.open(img)
-        foreground = Image.open(logo)
-        new_image = background.resize((1280, 590))
-        new_image.paste(foreground, (-40, -100), foreground)
-        new_image.save('new_image.jpg')
-
-        img = open('new_image.jpg', 'rb')
-        msg = "#castleclash\n" \
-              "#cbcevent https://discord.gg/castleclash"
+        x = -40
+        y = -100
+        msg = 'Отправьте изображения.'
         keyboard = creative.keyboard_logo()
         keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки видео', url='https://g.igg.com/EtngH2'))
         keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки фото', url='https://g.igg.com/oXK3JZ'))
-        media = telebot.types.InputMediaPhoto(img, caption=msg)
+        media = telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/Np7DAJBebYjSEg', caption=msg)
         bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                                media=media, reply_markup=keyboard)
 
     elif call.data == 'top_right_position':
-        img = open('image.jpg', 'rb')
-        logo = open('Database/logo.png', 'rb')
-        background = Image.open(img)
-        foreground = Image.open(logo)
-        new_image = background.resize((1280, 590))
-        new_image.paste(foreground, (900, -100), foreground)
-        new_image.save('new_image.jpg')
-
-        img = open('new_image.jpg', 'rb')
-        msg = "#castleclash\n" \
-              "#cbcevent https://discord.gg/castleclash"
+        x = 900
+        y = -100
+        msg = 'Отправьте изображения.'
         keyboard = creative.keyboard_logo()
         keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки видео', url='https://g.igg.com/EtngH2'))
         keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки фото', url='https://g.igg.com/oXK3JZ'))
-        media = telebot.types.InputMediaPhoto(img, caption=msg)
+        media = telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/NMWY081x0wOCXA', caption=msg)
         bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                                media=media, reply_markup=keyboard)
 
     elif call.data == 'bottom_left_position':
-        img = open('image.jpg', 'rb')
-        logo = open('Database/logo.png', 'rb')
-        background = Image.open(img)
-        foreground = Image.open(logo)
-        new_image = background.resize((1280, 590))
-        new_image.paste(foreground, (0, 300), foreground)
-        new_image.save('new_image.jpg')
-
-        img = open('new_image.jpg', 'rb')
-        msg = "#castleclash\n" \
-              "#cbcevent https://discord.gg/castleclash"
+        x = 0
+        y = 300
+        msg = 'Отправьте изображения.'
         keyboard = creative.keyboard_logo()
         keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки видео', url='https://g.igg.com/EtngH2'))
         keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки фото', url='https://g.igg.com/oXK3JZ'))
-        media = telebot.types.InputMediaPhoto(img, caption=msg)
+        media = telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/XJhqU7i2Fwuh-Q', caption=msg)
         bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                                media=media, reply_markup=keyboard)
 
     elif call.data == 'bottom_right_position':
-        img = open('image.jpg', 'rb')
-        logo = open('Database/logo.png', 'rb')
-        background = Image.open(img)
-        foreground = Image.open(logo)
-        new_image = background.resize((1280, 590))
-        new_image.paste(foreground, (900, 300), foreground)
-        new_image.save('new_image.jpg')
-
-        img = open('new_image.jpg', 'rb')
-        msg = "#castleclash\n" \
-              "#cbcevent https://discord.gg/castleclash"
+        x = 900
+        y = 300
+        msg = 'Отправьте изображения.'
         keyboard = creative.keyboard_logo()
         keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки видео', url='https://g.igg.com/EtngH2'))
         keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки фото', url='https://g.igg.com/oXK3JZ'))
-        media = telebot.types.InputMediaPhoto(img, caption=msg)
+        media = telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/EPZU-FzL7EjiVQ', caption=msg)
         bot.edit_message_media(message_id=call.message.message_id, chat_id=call.message.chat.id,
                                media=media, reply_markup=keyboard)

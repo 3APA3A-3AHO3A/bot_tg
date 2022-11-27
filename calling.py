@@ -32,10 +32,12 @@ def call_user(message):
                              "Привет, " + message.from_user.first_name +
                              ", бот создан KnightsOfNarsia. \nСправка /help ",
                              protect_content=True, reply_markup=keyboard)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text == "/delete" or message.text.lower() == "/delete@knightofnarsia_bot":
             keyboard = telebot.types.ReplyKeyboardRemove()
             bot.send_message(message.chat.id, "Удаляю клавиатуру", protect_content=True, reply_markup=keyboard)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text == "/help" or message.text.lower() == "/help@knightofnarsia_bot":
             keyboard = telebot.types.InlineKeyboardMarkup()
@@ -59,18 +61,22 @@ def call_user(message):
                              '\nЕсли остались вопросы или пожелания, напишите создателю бота.' +
                              '\nНаш канал по бесплатным самоцветам по ссылке ниже.',
                              protect_content=True, reply_markup=keyboard)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "нарсия" or message.text.lower() == "/narsiya" \
                 or message.text.lower() == "/narsiya@knightofnarsia_bot":
             narsiya.call_narsiya(message)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "креативщик" or message.text.lower() == "/creative" \
                 or message.text.lower() == "/creative@knightofnarsia_bot":
             creative.creative(message)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "бг" or message.text.lower() == "/bg" \
                 or message.text.lower() == "/bg@knightofnarsia_bot":
             build.call_bg(message)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "локации":
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -78,6 +84,7 @@ def call_user(message):
             keyboard.row('Факела', 'Подземелья', 'Назад')
             bot.send_message(message.from_user.id, "Выбери интересующую локацию.",
                              protect_content=True, reply_markup=keyboard)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "назад":
             keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -85,6 +92,7 @@ def call_user(message):
             keyboard.row('Справки', 'Нарсия', 'Креативщик')
             bot.send_message(message.from_user.id, "Выбери интересующую команду.",
                              protect_content=True, reply_markup=keyboard)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "смотрители" or message.text.lower() == "/smotr" \
                 or message.text.lower() == "/smotr@knightofnarsia_bot":
@@ -99,6 +107,7 @@ def call_user(message):
             )
             bot.send_message(message.chat.id, text='Выбери интересующего смотрителя:',
                              protect_content=True, reply_markup=keyboard)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "подземелья" or message.text.lower() == "/podzem" \
                 or message.text.lower() == "/podzem@knightofnarsia_bot":
@@ -106,22 +115,27 @@ def call_user(message):
             img = 'https://disk.yandex.ru/i/5SMx62WtuDJQOw'
             bot.send_photo(message.chat.id, img, caption='Выбери интересующее подземелье.',
                            protect_content=True, reply_markup=keyboard)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "босс" or message.text.lower() == "/boss" \
                 or message.text.lower() == "/boss@knightofnarsia_bot":
             location.boss(message)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "факела" or message.text.lower() == "/fakel" \
                 or message.text.lower() == "/fakel@knightofnarsia_bot":
             location.fakel(message.chat.id)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "справки" or message.text.lower() == "/table" \
                 or message.text.lower() == "/table@knightofnarsia_bot":
             table.call_table(message)
+            bot.delete_message(message.chat.id, message.message_id)
 
         elif message.text.lower() == "пвп" or message.text.lower() == "/pvp" \
                 or message.text.lower() == "/pvp@knightofnarsia_bot":
             build.call_pvp(message)
+            bot.delete_message(message.chat.id, message.message_id)
 
     elif message.chat.id == -1001180042310:
         pass

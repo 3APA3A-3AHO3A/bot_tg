@@ -2,32 +2,6 @@ import telebot
 import config
 
 bot = telebot.TeleBot(config.BOT_TOKEN)
-bot_logs = telebot.TeleBot(config.BOT_TOKEN_logs)
-
-
-def logo_mailing(message):
-    if message.content_type == "photo":
-        user_name = message.from_user.username
-        first_name = message.from_user.first_name
-        fileid = message.photo[-1].file_id
-        file_info = bot.get_file(fileid)
-        downloaded_file = bot.download_file(file_info.file_path)
-        with open("image.jpg", 'wb') as new_file:
-            new_file.write(downloaded_file)
-
-        img = open('image.jpg', 'rb')
-        msg = 'Выбери позицию логотипа.'
-        keyboard = keyboard_logo()
-        keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки видео', url='https://g.igg.com/EtngH2'))
-        keyboard.add(telebot.types.InlineKeyboardButton('Форма для отправки фото', url='https://g.igg.com/oXK3JZ'))
-        bot.send_photo(message.chat.id, img, caption=msg, reply_markup=keyboard, parse_mode='HTML')
-
-        msg_logs = f'Пользователь {first_name} @{user_name}\nID: <code>' + str(message.chat.id) + '</code> отправил.'
-        bot_logs.send_photo(config.admin_id[0], downloaded_file, caption=msg_logs, parse_mode='HTML')
-    elif message.content_type == "text":
-        pass
-    else:
-        bot.send_message(message.chat.id, 'Вызовите заново команду /logo и отправьте изображение!')
 
 
 def keyboard_logo():
