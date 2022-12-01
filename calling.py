@@ -183,11 +183,11 @@ def call_user(message):
                        photo='https://disk.yandex.ru/i/NPbT-pM3RfWVig')
 
     elif "скюль убийца" in message.text.lower():
-        document_id = 'CgACAgQAAxkBAAIN8mOImIoO_9IECXWGQ9ZWXEdARKg9AAJJAwACxloEU6Msxm05U-zhKwQ'
+        document_id = 'CgACAgQAAxkBAAJF1GOImXR1rcgQUVl96R6lxE3ucy7wAAJJAwACxloEU4-Hq88xJy3oKwQ'
         bot.send_document(message.chat.id, document_id)
 
     elif "скюль беги" in message.text.lower():
-        document_id = 'CgACAgQAAxkBAAIN6WOImEfSK2FYvwx6Bbhfd0YCaqSDAAJyAwACx3UkUzJ9vdAqrc41KwQ'
+        document_id = 'CgACAgQAAxkBAAJF2GOImXx_FH7EH4Mq7PNQF7ll4_kkAAJyAwACx3UkU6ZXdhH-8fDpKwQ'
         bot.send_document(message.chat.id, document_id)
 
     elif "@serj_kkk некультурный человек" in message.text.lower():
