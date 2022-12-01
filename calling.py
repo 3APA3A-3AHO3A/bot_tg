@@ -182,6 +182,14 @@ def call_user(message):
         bot.send_photo(chat_id=message.chat.id,
                        photo='https://disk.yandex.ru/i/NPbT-pM3RfWVig')
 
+    elif "скюль убийца" in message.text.lower():
+        document_id = 'CgACAgQAAxkBAAIN8mOImIoO_9IECXWGQ9ZWXEdARKg9AAJJAwACxloEU6Msxm05U-zhKwQ'
+        bot.send_document(message.chat.id, document_id)
+
+    elif "скюль беги" in message.text.lower():
+        document_id = 'CgACAgQAAxkBAAIN6WOImEfSK2FYvwx6Bbhfd0YCaqSDAAJyAwACx3UkUzJ9vdAqrc41KwQ'
+        bot.send_document(message.chat.id, document_id)
+
     elif "@serj_kkk некультурный человек" in message.text.lower():
         bot.reply_to(message, 'Я со своим малым полностью поддерживаю')
 

@@ -15,6 +15,20 @@ import send
 bot = telebot.TeleBot(config.BOT_TOKEN)
 
 
+@bot.message_handler(commands=['id_file'])
+def send_mail(message):
+    msg = bot.send_message(message.chat.id, 'Кинь документ.',
+                           protect_content=True)
+    bot.register_next_step_handler(msg, handle_files)
+
+
+def handle_files(message):
+    document_id = message.document.file_id
+    print(document_id)
+    # Выводим ссылку на файл
+    bot.send_message(message.chat.id, document_id)
+
+
 @bot.message_handler(content_types=["photo"])
 def logo_send(message):
     if config.author(message.chat.id, config.users):
