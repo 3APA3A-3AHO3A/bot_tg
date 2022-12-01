@@ -178,6 +178,10 @@ def call_user(message):
     elif "скюль бан" in message.text.lower():
         bot.reply_to(message, 'Ну что, доигрался малой?')
 
+    elif "скюль фото" in message.text.lower():
+        bot.send_photo(chat_id=message.chat.id,
+                       photo='https://disk.yandex.ru/i/NPbT-pM3RfWVig')
+
     elif "@serj_kkk некультурный человек" in message.text.lower():
         bot.reply_to(message, 'Я со своим малым полностью поддерживаю')
 
