@@ -24,7 +24,6 @@ def send_mail(message):
 
 def handle_files(message):
     document_id = message.document.file_id
-    print(document_id)
     # Выводим ссылку на файл
     bot.send_message(message.chat.id, document_id)
 
