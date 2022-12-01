@@ -160,6 +160,24 @@ def call_user(message):
     elif "скюль ты" in message.text.lower() or "скюль, ты" in message.text.lower():
         bot.reply_to(message, 'По имени и отчеству, пожалуйста')
 
+    elif "скюль малой" in message.text.lower():
+        bot.reply_to(message, 'У всех свои недостатки')
+
+    elif "скюль спать" in message.text.lower():
+        bot.reply_to(message, 'Горшок свистит, подушка плачет')
+
+    elif "кто скюль" in message.text.lower():
+        bot.reply_to(message, 'Камчатский краб')
+
+    elif "скюль инфа" in message.text.lower():
+        bot.reply_to(message, 'Малой, школьник, танцор, мистер целомудрие 2022, житель Камчатки, знает ответ на 2+2')
+
+    elif "скюль замолчи" in message.text.lower():
+        bot.reply_to(message, 'Скюль получает первое предупреждение')
+
+    elif "скюль бан" in message.text.lower():
+        bot.reply_to(message, 'Ну что, доигрался малой?')
+
     elif "@serj_kkk некультурный человек" in message.text.lower():
         bot.reply_to(message, 'Я со своим малым полностью поддерживаю')
 
