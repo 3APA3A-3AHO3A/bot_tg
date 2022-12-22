@@ -45,7 +45,7 @@ def callback_user(call):
     if call.data == "major":
         media = [telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/qWGY28C01v5z8w',
                                                caption="Сборка на БГ от Сергея @IKREMEN"),
-                 telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/9LlkDIm-2xCpxQ'),
+                 telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/KajltHnFGsAENQ'),
                  telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/BnERAU-ed_Z4qw'),
                  telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/vbDrxbqHW1z_aQ'),
                  telebot.types.InputMediaPhoto('https://disk.yandex.ru/i/q1C1TeqjmGM1XQ'),
